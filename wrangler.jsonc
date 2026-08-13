@@ -1,0 +1,9 @@
+{
+  // Serve o site como arquivos estáticos (Cloudflare Workers Static Assets).
+  // Não há código de servidor: o Worker apenas entrega o index.html e a pasta assets/.
+  "name": "mpsalimentos",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "."
+  }
+}
