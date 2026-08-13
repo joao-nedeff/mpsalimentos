@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trufas Ocas — MPS Alimentos</title>
+<meta name="description" content="Cascas de chocolate ao leite, prontas para rechear. Ø 25 mm, caixa com 126 unidades. Insumo para confeitarias — MPS Alimentos.">
+<meta property="og:title" content="Trufas Ocas — MPS Alimentos">
+<meta property="og:description" content="Cascas de chocolate ao leite, prontas para rechear. Ø 25 mm, caixa com 126 unidades.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6efe4;
+    --cream-2:#efe6d6;
+    --ink:#2c2016;
+    --muted:#6f5e49;
+    --gold:#a9772f;
+    --gold-deep:#8a5e1f;
+    --gold-2:#c69a54;
+    --choc:#4a2f1c;
+    --line:#e0d3bd;
+    --photo-bg:#f3f3f2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .serif{font-family:'Petrona',Georgia,serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+
+  header{padding:22px 0}
+  .bar{display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Petrona',serif;font-weight:600;font-size:1.25rem;letter-spacing:-.01em}
+  .brand span{color:var(--gold-deep)}
+  .bar .nav{font-size:.9rem;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+  .bar .nav:hover{color:var(--ink);border-color:var(--gold)}
+
+  .hero{padding:44px 0 74px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  h1{font-family:'Petrona',serif;font-size:clamp(3rem,7vw,5.6rem);line-height:.98;font-weight:600;letter-spacing:-.02em}
+  h1 em{font-style:italic;color:var(--choc)}
+  .lead{margin-top:24px;max-width:44ch;color:var(--muted);font-size:1.12rem}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:40px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .25s}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--choc);color:var(--cream);box-shadow:0 12px 28px -12px rgba(74,47,28,.7)}
+  .btn-primary:hover{transform:translateY(-2px);background:#3a2415;box-shadow:0 18px 34px -14px rgba(74,47,28,.8)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.4)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--gold)}
+
+  .photo{position:relative}
+  .photo .halo{position:absolute;inset:-6% -4%;background:radial-gradient(58% 58% at 50% 46%,rgba(198,154,84,.24),transparent 70%);z-index:0}
+  .photo .frame{position:relative;z-index:1;background:var(--photo-bg);border-radius:14px;padding:26px 30px;box-shadow:0 40px 70px -40px rgba(74,47,28,.55),0 0 0 1px rgba(74,47,28,.06),0 2px 0 rgba(255,255,255,.8) inset}
+  .photo img{display:block;width:100%;height:auto;border-radius:4px}
+  .photo .cap{position:relative;z-index:1;text-align:center;margin-top:16px;font-size:.86rem;color:var(--muted);font-style:italic;font-family:'Petrona',serif}
+
+  .specs{padding:8px 0 78px}
+  .specs .inner{background:rgba(255,255,255,.5);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .cell{padding:34px 28px;text-align:center;border-right:1px solid var(--line)}
+  .cell:last-child{border-right:none}
+  .cell .k{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:12px}
+  .cell .v{font-family:'Petrona',serif;font-size:2rem;font-weight:600;letter-spacing:-.01em;line-height:1.05}
+  .cell .v small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.82rem;font-weight:400;color:var(--muted);margin-top:6px}
+
+  .value{padding:16px 0 90px}
+  .value .inner{text-align:center;max-width:760px;margin:0 auto}
+  .value h2{font-family:'Petrona',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;letter-spacing:-.02em;line-height:1.1}
+  .value h2 em{font-style:italic;color:var(--gold-deep)}
+  .value p{margin-top:22px;color:var(--muted);font-size:1.1rem;max-width:60ch;margin-left:auto;margin-right:auto}
+
+  .contact{background:var(--choc);color:var(--cream);padding:82px 0}
+  .contact .inner{text-align:center}
+  .contact h2{font-family:'Petrona',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;letter-spacing:-.02em}
+  .contact .sub{color:#dcc9b0;margin-top:12px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .channels{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+  .chan{display:flex;align-items:center;gap:16px;padding:20px 26px;border:1px solid rgba(246,239,228,.22);border-radius:14px;text-decoration:none;color:var(--cream);background:rgba(255,255,255,.04);transition:background .25s,transform .25s,border-color .25s;text-align:left}
+  .chan:hover{background:rgba(255,255,255,.09);transform:translateY(-2px);border-color:var(--gold-2)}
+  .chan .ico{width:44px;height:44px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:rgba(198,154,84,.18);color:var(--gold-2)}
+  .chan:hover .ico{background:var(--gold);color:#2a1a0d}
+  .chan .ico svg{width:22px;height:22px}
+  .chan .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#d3bd9c}
+  .chan .v{font-weight:600;font-size:1.05rem;margin-top:2px;overflow-wrap:anywhere}
+  .chan>span{min-width:0}
+
+  footer{background:#3a2415;color:#c9b393;padding:26px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+
+  /* One authored entrance */
+  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .rise{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) both}
+  .rise-2{animation-delay:.09s}
+  .rise-3{animation-delay:.18s}
+  .photo{animation:riseIn .85s cubic-bezier(.2,.7,.2,1) .12s both}
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:42px}
+    .grid{grid-template-columns:1fr 1fr}
+    .cell:nth-child(2n){border-right:none}
+    .cell:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:520px){
+    .grid{grid-template-columns:1fr}
+    .cell{border-right:none!important;border-bottom:1px solid var(--line)}
+    .cell:last-child{border-bottom:none}
+    .channels{flex-direction:column}
+    .chan{justify-content:flex-start}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}.rise,.photo{animation:none!important}}
+</style>
+</head>
+<body>
+<!--
+IMPECCABLE DIRECTION CONTRACT (committed — user-chosen 2026-08-13)
+THESIS: Warm artisanal chocolatier world, the category standard executed at full craft
+  fidelity — cream, serif, gold, chocolate — chosen by the client over bolder directions.
+OWN-WORLD: Cream ground, Fraunces serif display with italic accents, gold + deep
+  chocolate, product photo on a light seamless plate, rounded warm cards.
+STORY: A confectioner feels craft and trust, reads the spec, and messages MPS.
+FIRST VIEWPORT: Serif name + positioning + two working CTAs left; framed product photo right.
+FORM: Canon (category default), committed at full fidelity per client choice.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<header>
+  <div class="wrap bar">
+    <div class="brand">MPS <span>Alimentos</span></div>
+    <a class="nav" href="#contato">Contato</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="rise">Trufas <em>Ocas</em></h1>
+        <p class="lead rise rise-2">Cascas de chocolate ao leite, delicadas e prontas para rechear. Você cria o recheio; a casca perfeita já está pronta.</p>
+        <div class="cta rise rise-3">
+          <a class="btn btn-primary" href="https://wa.me/5541988506691?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20Trufas%20Ocas%20da%20MPS%20Alimentos." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            Pedir no WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="mailto:joao@mpsalimentos.com?subject=Interesse%20nas%20Trufas%20Ocas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 5 8-5"/></svg>
+            E-mail
+          </a>
+        </div>
+      </div>
+      <div class="photo">
+        <div class="halo"></div>
+        <div class="frame">
+          <img src="assets/trufas-ocas.png" width="374" height="302" alt="Três trufas ocas de chocolate ao leite, com casca lisa e brilhante e leve relevo na superfície.">
+        </div>
+        <div class="cap">Casca lisa e brilhante, Ø 25 mm</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" aria-label="Especificações">
+    <div class="wrap">
+      <div class="inner">
+        <div class="grid">
+          <div class="cell"><div class="k">Sabor</div><div class="v">Ao leite<small>Chocolate nacional</small></div></div>
+          <div class="cell"><div class="k">Diâmetro</div><div class="v">Ø 25 mm<small>por unidade</small></div></div>
+          <div class="cell"><div class="k">Peso</div><div class="v">3,5–4 g<small>por unidade</small></div></div>
+          <div class="cell"><div class="k">Caixa</div><div class="v">126<small>unidades</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="value">
+    <div class="wrap">
+      <div class="inner">
+        <h2>A casca pronta. <em>O recheio é seu.</em></h2>
+        <p>Uma base neutra e regular que recebe qualquer recheio — ganache, brigadeiro, licor ou frutas. Ganhe tempo na produção e entregue trufas com acabamento uniforme, sem moldar casca por casca.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="inner">
+        <h2>Fale com a gente</h2>
+        <p class="sub">Peça amostras, valores e prazos. Atendemos confeitarias, docerias e produção em escala.</p>
+        <div class="channels">
+          <a class="chan" href="https://wa.me/5541988506691?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20Trufas%20Ocas%20da%20MPS%20Alimentos." target="_blank" rel="noopener">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></span>
+            <span><span class="k">WhatsApp</span><span class="v">(41) 98850-6691</span></span>
+          </a>
+          <a class="chan" href="mailto:joao@mpsalimentos.com?subject=Interesse%20nas%20Trufas%20Ocas">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 5 8-5"/></svg></span>
+            <span><span class="k">E-mail</span><span class="v">joao@mpsalimentos.com</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MPS Alimentos · mpsalimentos.com</span>
+    <span>Trufas Ocas · Chocolate nacional ao leite</span>
+  </div>
+</footer>
+</body>
+</html>
