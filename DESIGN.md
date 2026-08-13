@@ -6,6 +6,15 @@ Recorded from the shipped `index.html` (single-page Persuade surface). Warm arti
 chocolatier world — the category canon, chosen by the client and executed at full craft
 fidelity. Cream ground, elegant serif, gold + deep-chocolate palette, product photo as hero.
 
+Page order (top to bottom): **intro** (brand chamada "Chocolate nacional, feito aqui." +
+supporting line + scroll cue) → **about** ("Quem somos", reading passage ≤66ch) → **values**
+("O que nos move", 2×2 hairline-separated text matrix on a cream-2 band + italic closing line)
+→ **product** (Trufas Ocas hero: copy + framed photo) → **specs** (4-cell strip) → **value**
+("A casca pronta. O recheio é seu.") → **contact** (deep-chocolate band, WhatsApp + e-mail).
+The brand story opens; the product is reached by scrolling. Single `<h1>` = the chamada;
+every section below is an `<h2>`. Values are type-only (no icon cards) to avoid the card
+anti-pattern; no eyebrow/kicker anywhere.
+
 ## Palette
 
 | Role | Token | Value |

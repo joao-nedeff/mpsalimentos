@@ -22,6 +22,14 @@ Present MPS Alimentos' single product — "Trufas Ocas" (hollow milk-chocolate t
 
 Ready-to-fill hollow chocolate shells made with Brazilian ("nacional") milk chocolate, at a consistent standardized size — a wholesale ingredient for confectioners who add their own fillings.
 
+Brand stance (client-provided, 2026-08-13): "Chocolate nacional, feito aqui." A domestic
+producer positioned against the imported chocolate that dominates the market — offering
+competitive quality without foreign-currency cost, long lead times, or distance. Values:
+national production (supply stability), Brazilian cocoa chain, competitive quality vs.
+imported peers, and closeness (direct service, no intermediaries, no time zone). Framing:
+a new company that turns "just starting" into an advantage — grows by listening to each
+client. Voice: direct, confident, plain-spoken, addresses the buyer as "você".
+
 ## Operating Context
 
 Buyers reach the site (likely mobile-first, Brazil), assess the product spec, and start a conversation over WhatsApp or e-mail. No online checkout, cart, or catalog — contact-driven sales.
