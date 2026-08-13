@@ -9,11 +9,15 @@ fidelity. Cream ground, elegant serif, gold + deep-chocolate palette, product ph
 Page order (top to bottom): **intro** (brand chamada "Chocolate nacional, feito aqui." +
 supporting line + scroll cue) → **about** ("Quem somos", reading passage ≤66ch) → **values**
 ("O que nos move", 2×2 hairline-separated text matrix on a cream-2 band + italic closing line)
-→ **product** (Trufas Ocas hero: copy + framed photo) → **specs** (4-cell strip) → **value**
-("A casca pronta. O recheio é seu.") → **contact** (deep-chocolate band, WhatsApp + e-mail).
-The brand story opens; the product is reached by scrolling. Single `<h1>` = the chamada;
-every section below is an `<h2>`. Values are type-only (no icon cards) to avoid the card
-anti-pattern; no eyebrow/kicker anywhere.
+→ **product** (Trufas Ocas hero: copy + framed photo) → **value** ("A casca pronta. O recheio
+é seu.", centered statement) → **specs** (4-cell strip) → **contact** (deep-chocolate band,
+WhatsApp + e-mail). The brand story opens; the product is reached by scrolling. Single `<h1>`
+= the chamada; every section below is an `<h2>`. Values are type-only (no icon cards) to avoid
+the card anti-pattern; no eyebrow/kicker anywhere.
+
+**Logo:** vector brand mark (a cocoa-drop symbol with cream flame swirls, transparent bg) at
+`assets/logo.svg` (PNG fallback `assets/logo.png`), 40px tall in the header, left of the "MPS
+Alimentos" wordmark. Symbol only — no lettering — so it sits beside the wordmark, not replacing it.
 
 ## Palette
 

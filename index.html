@@ -32,7 +32,8 @@
 
   header{padding:22px 0;position:relative;z-index:5}
   .bar{display:flex;align-items:center;justify-content:space-between}
-  .brand{font-family:'Petrona',serif;font-weight:600;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .brand{display:inline-flex;align-items:center;gap:11px;font-family:'Petrona',serif;font-weight:600;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .brand-logo{height:40px;width:auto;display:block}
   .brand span{color:var(--gold-deep)}
   .bar .nav{font-size:.9rem;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
   .bar .nav:hover{color:var(--ink);border-color:var(--gold)}
@@ -94,7 +95,7 @@
   .cell .v{font-family:'Petrona',serif;font-size:2rem;font-weight:600;letter-spacing:-.01em;line-height:1.05}
   .cell .v small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.82rem;font-weight:400;color:var(--muted);margin-top:6px}
 
-  .value{padding:16px 0 90px}
+  .value{padding:12px 0 58px}
   .value .inner{text-align:center;max-width:760px;margin:0 auto}
   .value h2{font-family:'Petrona',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;letter-spacing:-.02em;line-height:1.1}
   .value h2 em{font-style:italic;color:var(--gold-deep)}
@@ -157,7 +158,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 -->
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#topo">MPS <span>Alimentos</span></a>
+    <a class="brand" href="#topo"><img class="brand-logo" src="assets/logo.svg" alt="" width="32" height="40">MPS <span>Alimentos</span></a>
     <a class="nav" href="#contato">Contato</a>
   </div>
 </header>
@@ -230,6 +231,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
   </section>
 
+  <section class="value">
+    <div class="wrap">
+      <div class="inner">
+        <h2>A casca pronta. <em>O recheio é seu.</em></h2>
+        <p>Uma base neutra e regular que recebe qualquer recheio — ganache, brigadeiro, licor ou frutas. Ganhe tempo na produção e entregue trufas com acabamento uniforme, sem moldar casca por casca.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="specs" aria-label="Especificações">
     <div class="wrap">
       <div class="inner">
@@ -239,15 +249,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <div class="cell"><div class="k">Peso</div><div class="v">3,5–4 g<small>por unidade</small></div></div>
           <div class="cell"><div class="k">Caixa</div><div class="v">126<small>unidades</small></div></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="value">
-    <div class="wrap">
-      <div class="inner">
-        <h2>A casca pronta. <em>O recheio é seu.</em></h2>
-        <p>Uma base neutra e regular que recebe qualquer recheio — ganache, brigadeiro, licor ou frutas. Ganhe tempo na produção e entregue trufas com acabamento uniforme, sem moldar casca por casca.</p>
       </div>
     </div>
   </section>
