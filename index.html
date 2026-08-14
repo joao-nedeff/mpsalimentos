@@ -116,7 +116,9 @@
   .chan>span{min-width:0}
 
   footer{background:#3a2415;color:#c9b393;padding:26px 0}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+  .paw{display:inline-flex;line-height:0}
+  .paw svg{height:22px;width:auto;display:block;opacity:.92}
 
   /* One authored entrance, on the opening only */
   @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -175,8 +177,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="about">
     <div class="wrap about-inner">
       <h2 class="section-title">Quem somos</h2>
-      <p>Nascemos de uma constatação simples: os produtos que abastecem o nosso mercado vêm, em sua maioria, do exterior — e trazem consigo chocolate importado. Isso significa custo em moeda estrangeira, prazos longos e pouca margem para adaptar o produto a quem realmente o consome: <em>você</em>.</p>
-      <p>Decidimos fazer diferente. Produzimos aqui, com chocolate nacional, entregando a mesma qualidade que o mercado já conhece — com a agilidade, a proximidade e a previsibilidade que só um fornecedor local pode oferecer.</p>
+      <p>Produzimos aqui, com chocolate nacional, um produto com o mesmo desempenho, o mesmo acabamento e o mesmo resultado final que você já conhece.</p>
+      <p>Nada muda na sua receita — <em>muda o que você paga</em> e a certeza de encontrar quando precisar.</p>
     </div>
   </section>
 
@@ -276,7 +278,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <footer>
   <div class="wrap">
     <span>© 2026 MPS Alimentos · mpsalimentos.com</span>
-    <span>Chocolate nacional · Trufas Ocas</span>
+    <span class="paw" role="img" aria-label="MPS Alimentos">
+      <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+        <ellipse cx="24" cy="19" rx="7" ry="10" transform="rotate(-18 24 19)"/>
+        <ellipse cx="40" cy="19" rx="7" ry="10" transform="rotate(18 40 19)"/>
+        <ellipse cx="11.5" cy="33" rx="6.5" ry="9.5" transform="rotate(-42 11.5 33)"/>
+        <ellipse cx="52.5" cy="33" rx="6.5" ry="9.5" transform="rotate(42 52.5 33)"/>
+        <path d="M32 32c-10 0-17 7-17 15 0 6 4 11 10 12 3 .5 5-2 7-2s4 2.5 7 2c6-1 10-6 10-12 0-8-7-15-17-15z"/>
+      </svg>
+    </span>
   </div>
 </footer>
 </body>
