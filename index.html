@@ -502,7 +502,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   if (!form) return;
   var status = document.getElementById('form-status');
   var btn = document.getElementById('form-submit');
-  var ENDPOINT = 'https://formsubmit.co/ajax/joao@mpsalimentos.com';
+  var ENDPOINT = '/api/contact';
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -521,14 +521,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         name: form.elements['name'].value,
         email: form.elements['email'].value,
         message: form.elements['message'].value,
-        _subject: 'Novo contato pelo site — MPS Alimentos',
-        _template: 'table',
-        _captcha: 'false'
+        _honey: form.elements['_honey'].value
       })
     })
     .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return { ok: r.ok, d: d }; }); })
     .then(function(res){
-      if (res.ok && (res.d.success === 'true' || res.d.success === true)){
+      if (res.ok && res.d.ok === true){
         status.className = 'form-status ok';
         status.textContent = 'Mensagem enviada! Vamos responder em breve.';
         form.reset();
