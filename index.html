@@ -40,6 +40,10 @@
   .brand span{color:var(--gold-deep)}
   .bar .nav{font-size:.9rem;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
   .bar .nav:hover{color:var(--ink);border-color:var(--gold)}
+  .bar-right{display:flex;align-items:center;gap:16px}
+  .nav-ig{display:inline-flex;color:var(--muted);transition:color .2s,transform .2s}
+  .nav-ig svg{width:22px;height:22px;display:block}
+  .nav-ig:hover{color:var(--gold-deep);transform:translateY(-1px)}
 
   /* ---- Opening: brand story ---- */
   .intro{padding:11vh 0 8vh}
@@ -222,7 +226,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <header>
   <div class="wrap bar">
     <a class="brand" href="#topo"><img class="brand-logo" src="assets/logo.svg" alt="" width="32" height="40">MPS <span>Alimentos</span></a>
-    <a class="nav" href="#contato">Contato</a>
+    <div class="bar-right">
+      <a class="nav" href="#contato">Contato</a>
+      <a class="nav-ig" href="https://instagram.com/mps.alimentos" target="_blank" rel="noopener" aria-label="Instagram @mps.alimentos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
   </div>
 </header>
 
