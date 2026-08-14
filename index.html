@@ -139,6 +139,26 @@
   .cookie-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .cookie-btn.ghost:hover{border-color:var(--gold)}
 
+  /* Cookie preferences modal */
+  .cookie-modal{position:fixed;inset:0;z-index:110;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,20,12,.55)}
+  .cookie-modal[hidden]{display:none}
+  .cookie-modal-card{background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:16px;max-width:470px;width:100%;padding:26px;box-shadow:0 30px 70px -25px rgba(0,0,0,.6);max-height:90vh;overflow-y:auto}
+  .cookie-modal-card h2{font-family:'Petrona',serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px}
+  .cookie-modal-intro{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+  .cookie-cat{border-top:1px solid var(--line);padding:16px 0}
+  .cookie-cat p{font-size:.86rem;color:var(--muted);margin-top:6px}
+  .cookie-cat-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .cookie-cat-name{font-weight:600;font-size:1rem}
+  .cookie-badge{font-size:.72rem;color:var(--gold-deep);background:rgba(138,94,31,.12);border:1px solid var(--line);padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .cookie-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+  .switch{position:relative;display:inline-block;width:44px;height:26px;flex:0 0 auto}
+  .switch input{position:absolute;opacity:0;width:0;height:0}
+  .switch .slider{position:absolute;inset:0;background:#d9ccb6;border-radius:20px;transition:background .2s;cursor:pointer}
+  .switch .slider::before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  .switch input:checked + .slider{background:var(--choc)}
+  .switch input:checked + .slider::before{transform:translateX(18px)}
+  .switch input:focus-visible + .slider{outline:2px solid var(--gold);outline-offset:2px}
+
   /* One authored entrance, on the opening only */
   @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   .rise{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both}
@@ -310,18 +330,46 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </footer>
 
 <div id="cookie-banner" class="cookie-banner" hidden role="dialog" aria-label="Aviso de cookies" aria-live="polite">
-  <p>Usamos cookies do Google Analytics para entender como o site é usado e melhorá-lo. Você escolhe. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
+  <p>Usamos cookies para analisar o tráfego e melhorar o site. Você escolhe o que permitir. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
   <div class="cookie-actions">
-    <button id="cookie-reject" class="cookie-btn ghost" type="button">Recusar</button>
+    <button id="cookie-prefs" class="cookie-btn ghost" type="button">Personalizar</button>
     <button id="cookie-accept" class="cookie-btn solid" type="button">Aceitar</button>
+  </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+  <div class="cookie-modal-card">
+    <h2 id="cookie-modal-title">Preferências de cookies</h2>
+    <p class="cookie-modal-intro">Escolha quais dados podem ser coletados. Você pode alterar isso quando quiser pelo link “Cookies” no rodapé.</p>
+
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <span class="cookie-cat-name">Necessários</span>
+        <span class="cookie-badge">Sempre ativos</span>
+      </div>
+      <p>Essenciais para o site funcionar e para lembrar as suas escolhas. Não rastreiam a sua navegação.</p>
+    </div>
+
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <span class="cookie-cat-name">Análise e desempenho</span>
+        <label class="switch"><input type="checkbox" id="cookie-analytics"><span class="slider"></span></label>
+      </div>
+      <p>Google Analytics: ajuda a entender como o site é usado, de forma agregada. Usa cookies.</p>
+    </div>
+
+    <div class="cookie-modal-actions">
+      <button id="cookie-reject-all" class="cookie-btn ghost" type="button">Recusar todas</button>
+      <button id="cookie-save" class="cookie-btn solid" type="button">Salvar preferências</button>
+    </div>
   </div>
 </div>
 
 <script>
 (function(){
-  var KEY = 'mps-consent-v1';
+  var KEY = 'mps-consent-v2';
   var GA_ID = 'G-9RMZFXB8KT';
-  var banner, gaLoaded = false;
+  var banner, modal, chkAnalytics, gaLoaded = false, analyticsOn = false;
 
   function loadGA(){
     if (gaLoaded) return; gaLoaded = true;
@@ -334,28 +382,50 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
   }
-  function save(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
-  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function applyConsent(analytics){
+    analyticsOn = !!analytics;
+    window['ga-disable-' + GA_ID] = !analytics; // respeitado pelo GA mesmo se já carregado
+    if (analytics) loadGA();
+  }
+  function save(analytics){ try{ localStorage.setItem(KEY, JSON.stringify({analytics: !!analytics})); }catch(e){} }
+  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)); }catch(e){ return null; } }
 
-  // Reabrir o banner pelo link "Cookies" no rodapé
-  window.mpsOpenConsent = function(){ if (banner) banner.hidden = false; };
+  function openModal(){
+    if (!modal) return;
+    var c = read();
+    chkAnalytics.checked = c ? !!c.analytics : false;
+    modal.hidden = false;
+  }
+  function closeModal(){ if (modal) modal.hidden = true; }
+  function hideBanner(){ if (banner) banner.hidden = true; }
 
-  function track(name){ if (gaLoaded && window.gtag){ try{ gtag('event', name); }catch(e){} } }
+  // Link "Cookies" no rodapé abre o painel de preferências
+  window.mpsOpenConsent = function(){ openModal(); };
+
+  function track(name){ if (analyticsOn && window.gtag){ try{ gtag('event', name); }catch(e){} } }
 
   document.addEventListener('DOMContentLoaded', function(){
     banner = document.getElementById('cookie-banner');
-    var choice = read();
-    if (choice === 'granted') loadGA();
-    else if (choice !== 'denied') banner.hidden = false; // sem escolha ainda
+    modal = document.getElementById('cookie-modal');
+    chkAnalytics = document.getElementById('cookie-analytics');
+
+    var saved = read();
+    if (saved) applyConsent(saved.analytics);
+    else banner.hidden = false;
 
     document.getElementById('cookie-accept').addEventListener('click', function(){
-      save('granted'); loadGA(); banner.hidden = true;
+      save(true); applyConsent(true); hideBanner(); closeModal();
     });
-    document.getElementById('cookie-reject').addEventListener('click', function(){
-      save('denied'); banner.hidden = true;
+    document.getElementById('cookie-prefs').addEventListener('click', openModal);
+    document.getElementById('cookie-save').addEventListener('click', function(){
+      var a = chkAnalytics.checked; save(a); applyConsent(a); hideBanner(); closeModal();
     });
+    document.getElementById('cookie-reject-all').addEventListener('click', function(){
+      save(false); applyConsent(false); hideBanner(); closeModal();
+    });
+    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
 
-    // Rastreio de contato (só registra se houver consentimento)
+    // Rastreio de contato (só registra com consentimento de análise)
     document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
       a.addEventListener('click', function(){ track('clique_whatsapp'); });
     });
