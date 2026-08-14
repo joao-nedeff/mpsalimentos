@@ -122,6 +122,22 @@
   footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
   .paw{display:inline-flex;line-height:0}
   .paw svg{height:11px;width:auto;display:block;opacity:.92}
+  footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+  footer a:hover{color:var(--gold-2)}
+  .linklike{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+  .linklike:hover{color:var(--gold-2)}
+
+  /* Cookie consent */
+  .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:540px;margin:0 auto;background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 50px -20px rgba(74,47,28,.55);padding:18px 20px;z-index:100;display:flex;flex-direction:column;gap:12px}
+  .cookie-banner[hidden]{display:none}
+  .cookie-banner p{font-size:.9rem;color:var(--muted)}
+  .cookie-banner a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+  .cookie-actions{display:flex;gap:10px;justify-content:flex-end}
+  .cookie-btn{padding:9px 18px;border-radius:30px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s}
+  .cookie-btn.solid{background:var(--choc);color:var(--cream)}
+  .cookie-btn.solid:hover{transform:translateY(-1px);background:#3a2415}
+  .cookie-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .cookie-btn.ghost:hover{border-color:var(--gold)}
 
   /* One authored entrance, on the opening only */
   @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -280,7 +296,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <footer>
   <div class="wrap">
-    <span>© 2026 MPS Alimentos · mpsalimentos.com</span>
+    <span>© 2026 MPS Alimentos · <a href="privacidade.html">Política de Privacidade</a> · <button type="button" class="linklike" onclick="mpsOpenConsent()">Cookies</button></span>
     <span class="paw" role="img" aria-label="MPS Alimentos">
       <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
         <ellipse cx="24" cy="19" rx="7" ry="10" transform="rotate(-18 24 19)"/>
@@ -292,5 +308,62 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </span>
   </div>
 </footer>
+
+<div id="cookie-banner" class="cookie-banner" hidden role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+  <p>Usamos cookies do Google Analytics para entender como o site é usado e melhorá-lo. Você escolhe. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
+  <div class="cookie-actions">
+    <button id="cookie-reject" class="cookie-btn ghost" type="button">Recusar</button>
+    <button id="cookie-accept" class="cookie-btn solid" type="button">Aceitar</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY = 'mps-consent-v1';
+  var GA_ID = 'G-9RMZFXB8KT';
+  var banner, gaLoaded = false;
+
+  function loadGA(){
+    if (gaLoaded) return; gaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+  function save(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
+  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+
+  // Reabrir o banner pelo link "Cookies" no rodapé
+  window.mpsOpenConsent = function(){ if (banner) banner.hidden = false; };
+
+  function track(name){ if (gaLoaded && window.gtag){ try{ gtag('event', name); }catch(e){} } }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    banner = document.getElementById('cookie-banner');
+    var choice = read();
+    if (choice === 'granted') loadGA();
+    else if (choice !== 'denied') banner.hidden = false; // sem escolha ainda
+
+    document.getElementById('cookie-accept').addEventListener('click', function(){
+      save('granted'); loadGA(); banner.hidden = true;
+    });
+    document.getElementById('cookie-reject').addEventListener('click', function(){
+      save('denied'); banner.hidden = true;
+    });
+
+    // Rastreio de contato (só registra se houver consentimento)
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
+      a.addEventListener('click', function(){ track('clique_whatsapp'); });
+    });
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+      a.addEventListener('click', function(){ track('clique_email'); });
+    });
+  });
+})();
+</script>
 </body>
 </html>
