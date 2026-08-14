@@ -1,9 +1,11 @@
 {
-  // Serve o site como arquivos estáticos (Cloudflare Workers Static Assets).
-  // Não há código de servidor: o Worker apenas entrega o index.html e a pasta assets/.
+  // Worker com script mínimo (src/index.js) que serve os arquivos estáticos
+  // via binding ASSETS. Ter um "main" permite adicionar Custom Domain no painel.
   "name": "mpsalimentos",
+  "main": "src/index.js",
   "compatibility_date": "2025-01-01",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   }
 }
