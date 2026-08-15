@@ -3,14 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MPS Alimentos — Chocolate nacional, feito aqui</title>
+<title>MPS Alimentos · Chocolate nacional, feito aqui</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
-<meta name="description" content="Chocolate nacional para confeitaria. Trufas Ocas: cascas de chocolate ao leite prontas para rechear — Ø 25 mm, caixa com 126 unidades. Produção brasileira, atendimento direto.">
-<meta property="og:title" content="MPS Alimentos — Chocolate nacional, feito aqui">
+<meta name="description" content="Chocolate nacional para confeitaria. Trufas Ocas: cascas de chocolate ao leite prontas para rechear. Ø 25 mm, caixa com 126 unidades. Produção brasileira, atendimento direto.">
+<meta property="og:title" content="MPS Alimentos · Chocolate nacional, feito aqui">
 <meta property="og:description" content="Chocolate nacional para confeitaria. Trufas Ocas: cascas de chocolate ao leite prontas para rechear, Ø 25 mm, caixa com 126 unidades.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://www.mpsalimentos.com/assets/trufas-ocas.png">
+
+<!-- ============================================================
+     META PIXEL: cole o seu Pixel (substitua SEU_PIXEL_ID) e
+     descomente quando tiver o ID. Dispara no carregamento.
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+     ============================================================ -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
@@ -24,6 +42,7 @@
     --gold-deep:#8a5e1f;
     --gold-2:#c69a54;
     --choc:#4a2f1c;
+    --choc-deep:#3a2415;
     --line:#e0d3bd;
     --photo-bg:#ffffff;
   }
@@ -34,102 +53,98 @@
   .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
 
   header{padding:22px 0;position:relative;z-index:5}
-  .bar{display:flex;align-items:center;justify-content:space-between}
+  .bar{display:flex;align-items:center;justify-content:flex-start}
   .brand{display:inline-flex;align-items:center;gap:14px;font-family:'Petrona',serif;font-weight:600;font-size:1.7rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
   .brand-logo{height:58px;width:auto;display:block}
   .brand span{color:var(--gold-deep)}
-  .bar .nav{font-size:.9rem;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
-  .bar .nav:hover{color:var(--ink);border-color:var(--gold)}
-  .bar-right{display:flex;align-items:center;gap:16px}
-  .nav-ig{display:inline-flex;color:var(--muted);transition:color .2s,transform .2s}
-  .nav-ig svg{width:22px;height:22px;display:block}
-  .nav-ig:hover{color:var(--gold-deep);transform:translateY(-1px)}
 
-  /* ---- Opening: brand story ---- */
-  .intro{padding:11vh 0 8vh}
-  .intro-inner{max-width:940px}
-  h1{font-family:'Petrona',serif;font-size:clamp(2rem,6.4vw,4.7rem);line-height:1.05;font-weight:600;letter-spacing:-.02em}
-  h1 em{font-style:italic;color:var(--choc)}
-  .intro-sub{margin-top:24px;font-family:'Petrona',serif;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.35;color:var(--muted);max-width:34ch}
-  .scroll-cue{display:inline-flex;align-items:center;gap:10px;margin-top:44px;font-size:.9rem;letter-spacing:.02em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:6px;transition:color .2s,border-color .2s}
-  .scroll-cue span{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-  .scroll-cue:hover{color:var(--gold-deep);border-color:var(--gold)}
-  .scroll-cue:hover span{transform:translateY(3px)}
+  /* ---- Hero ---- */
+  .hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,20,12,.12) 0%,rgba(30,20,12,.3) 42%,rgba(30,20,12,.72) 72%,rgba(30,20,12,.92) 100%)}
+  .hero-inner{position:relative;z-index:2;padding-top:12vh;padding-bottom:9vh;color:var(--cream);max-width:940px;text-shadow:0 2px 18px rgba(20,12,7,.55)}
+  h1{font-family:'Petrona',serif;font-size:clamp(2.2rem,6.6vw,4.9rem);line-height:1.04;font-weight:600;letter-spacing:-.02em}
+  .hero-inner h1{color:var(--cream)}
+  .hero-inner h1 em{font-style:italic;color:var(--gold-2)}
+  .hero-sub{margin-top:22px;font-family:'Petrona',serif;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.35;color:#f4ead8;max-width:36ch}
 
-  /* ---- Quem somos ---- */
-  .about{padding:44px 0 12px}
-  .about-inner{max-width:66ch;margin:0 auto}
-  .section-title{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:26px}
-  .about-inner p{color:var(--ink);font-size:1.1rem;max-width:62ch}
-  .about-inner p + p{margin-top:20px}
-  .about-inner em{font-style:italic;color:var(--choc)}
-
-  /* ---- O que nos move ---- */
-  .values{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:64px;padding:74px 0 78px}
-  .values .section-title{text-align:center;margin-bottom:44px}
-  .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 56px;max-width:900px;margin:0 auto}
-  .val{padding-top:22px;border-top:1px solid var(--line)}
-  .val h3{font-family:'Petrona',serif;font-weight:600;font-size:1.35rem;color:var(--gold-deep);letter-spacing:-.01em;margin-bottom:8px}
-  .val p{color:var(--muted);font-size:1.02rem}
-  .values-close{max-width:56ch;margin:52px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.4rem);line-height:1.4;color:var(--choc)}
-
-  /* ---- Product ---- */
-  .product{padding:78px 0}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .product-name{font-family:'Petrona',serif;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.98;font-weight:600;letter-spacing:-.02em}
-  .product-name em{font-style:italic;color:var(--choc)}
-  .lead{margin-top:22px;max-width:44ch;color:var(--muted);font-size:1.12rem}
-  .cta{display:flex;flex-direction:column;gap:12px;margin-top:32px;max-width:300px}
+  /* ---- Buttons ---- */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:40px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,background .25s}
   .btn svg{width:18px;height:18px}
-  .btn-primary{background:var(--choc);color:var(--cream);box-shadow:0 12px 28px -12px rgba(74,47,28,.7)}
-  .btn-primary:hover{transform:translateY(-2px);background:#3a2415;box-shadow:0 18px 34px -14px rgba(74,47,28,.8)}
-  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.4)}
-  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--gold)}
+  .btn-gold{background:var(--gold-2);color:#2a1a0d;box-shadow:0 14px 30px -14px rgba(198,154,84,.8)}
+  .btn-gold:hover{transform:translateY(-2px);background:#d4a860}
+  .btn-outline{color:var(--cream);border:1px solid rgba(246,239,228,.3);background:rgba(255,255,255,.05)}
+  .btn-outline:hover{transform:translateY(-2px);border-color:var(--gold-2)}
+  .btn-beige{background:var(--cream);color:#2a1a0d;font-size:1.05rem;padding:17px 36px;box-shadow:0 16px 34px -14px rgba(0,0,0,.55)}
+  .btn-beige:hover{transform:translateY(-2px);background:#fff}
+  .hero-inner .btn-beige{margin-top:34px}
 
-  .photo{position:relative}
-  .photo .halo{position:absolute;inset:-6% -4%;background:radial-gradient(58% 58% at 50% 46%,rgba(198,154,84,.24),transparent 70%);z-index:0}
-  .photo .frame{position:relative;z-index:1;background:var(--photo-bg);border-radius:14px;padding:26px 30px;box-shadow:0 40px 70px -40px rgba(74,47,28,.55),0 0 0 1px rgba(74,47,28,.06),0 2px 0 rgba(255,255,255,.8) inset}
-  .photo img{display:block;width:100%;height:auto;border-radius:4px}
-  .photo .cap{position:relative;z-index:1;text-align:center;margin-top:16px;font-size:.86rem;color:var(--muted);font-style:italic;font-family:'Petrona',serif}
+  /* ---- Product: dark chocolate band ---- */
+  .product-dark{background:var(--choc);color:var(--cream);padding:84px 0 90px}
+  .pd-head{text-align:center;margin:0 auto 42px}
+  .pd-head h2{font-family:'Petrona',serif;font-size:clamp(2rem,5.4vw,3.4rem);font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--cream)}
+  .pd-head .ph{display:inline-block;white-space:nowrap}
+  .pd-head h2 em{font-style:italic;color:var(--gold-2)}
+  .pd-photo{max-width:400px;margin:0 auto 40px;position:relative}
+  .pd-photo .halo{position:absolute;inset:-8% -6%;background:radial-gradient(58% 58% at 50% 46%,rgba(198,154,84,.3),transparent 70%);z-index:0}
+  .pd-photo .frame{position:relative;z-index:1;background:var(--photo-bg);border-radius:14px;padding:24px 28px;box-shadow:0 44px 80px -40px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.12)}
+  .pd-photo img{display:block;width:100%;height:auto;border-radius:4px}
+  .pd-photo .cap{position:relative;z-index:1;text-align:center;margin-top:14px;font-size:.84rem;color:#cdb894;font-style:italic;font-family:'Petrona',serif}
+  .pd-body{max-width:640px;margin:0 auto;text-align:center}
+  .pd-name{font-family:'Petrona',serif;font-size:clamp(2.4rem,6vw,3.8rem);line-height:1;font-weight:600;letter-spacing:-.02em;color:var(--cream)}
+  .pd-name em{font-style:italic;color:var(--gold-2)}
+  .pd-lead{margin:20px auto 0;max-width:52ch;color:#e3d3ba;font-size:1.12rem}
+  .pd-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
 
-  .specs{padding:8px 0 78px}
-  .specs .inner{background:rgba(255,255,255,.5);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  /* Spec panel: base neutra + table */
+  .spec-panel{max-width:820px;margin:46px auto 0;background:rgba(255,255,255,.045);border:1px solid rgba(246,239,228,.22);border-radius:18px;overflow:hidden}
+  .spec-note{padding:26px 30px;background:rgba(255,255,255,.055);border-bottom:1px solid rgba(246,239,228,.22);font-family:'Petrona',serif;font-style:italic;font-size:clamp(1.05rem,2.2vw,1.28rem);line-height:1.5;color:#e3d3ba;text-align:center}
+  .spec-note p + p{margin-top:12px}
+  .spec-note strong{font-weight:700;font-style:normal;color:#f4e7cf}
   .grid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .cell{padding:34px 28px;text-align:center;border-right:1px solid var(--line)}
+  .cell{padding:30px 24px;text-align:center;border-right:1px solid rgba(246,239,228,.18)}
   .cell:last-child{border-right:none}
-  .cell .k{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:12px}
-  .cell .v{font-family:'Petrona',serif;font-size:2rem;font-weight:600;letter-spacing:-.01em;line-height:1.05}
-  .cell .v small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.82rem;font-weight:400;color:var(--muted);margin-top:6px}
+  .cell .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:10px}
+  .cell .v{font-family:'Petrona',serif;font-size:1.9rem;font-weight:600;letter-spacing:-.01em;line-height:1.05;color:var(--cream)}
+  .cell .v small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.8rem;font-weight:400;color:#cbb692;margin-top:6px}
 
-  .value{padding:12px 0 58px}
-  .value .inner{text-align:center;max-width:760px;margin:0 auto}
-  .value h2{font-family:'Petrona',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;letter-spacing:-.02em;line-height:1.1}
-  .value h2 em{font-style:italic;color:var(--gold-deep)}
-  .value p{margin-top:22px;color:var(--muted);font-size:1.1rem;max-width:60ch;margin-left:auto;margin-right:auto}
+  /* ---- Sections: O que nos move / Quem somos ---- */
+  .split-sec{padding:76px 0}
+  .split-sec.tinted{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .section-title{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.9rem,4.2vw,2.9rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  .section-title.center{text-align:center;margin-bottom:30px}
+  .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 52px;max-width:860px;margin:0 auto}
+  .val{border-top:1px solid var(--line);padding:20px 0}
+  .val h3{font-family:'Petrona',serif;font-weight:600;font-size:1.3rem;color:var(--gold-deep);letter-spacing:-.01em;margin-bottom:6px}
+  .val p{color:var(--muted);font-size:1.02rem}
+  .values-close{max-width:56ch;margin:40px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:clamp(1.12rem,2.2vw,1.35rem);line-height:1.4;color:var(--choc)}
+  .about-wrap{max-width:660px;margin:0 auto}
+  .about-p{color:var(--ink);font-size:1.12rem;max-width:60ch;margin-left:auto;margin-right:auto;text-align:center}
+  .about-p + .about-p{margin-top:18px}
+  .about-p em{font-style:italic;color:var(--choc)}
 
-  .contact{background:var(--choc);color:var(--cream);padding:82px 0}
+  /* ---- Contact ---- */
+  .contact{background:var(--choc);color:var(--cream);padding:84px 0}
   .contact .inner{text-align:center}
   .contact h2{font-family:'Petrona',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;letter-spacing:-.02em}
   .contact .sub{color:#dcc9b0;margin-top:12px;max-width:52ch;margin-left:auto;margin-right:auto}
-  .channels{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+  .channels{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:44px}
   .chan{display:flex;align-items:center;gap:16px;padding:20px 26px;border:1px solid rgba(246,239,228,.22);border-radius:14px;text-decoration:none;color:var(--cream);background:rgba(255,255,255,.04);transition:background .25s,transform .25s,border-color .25s;text-align:left}
   .chan:hover{background:rgba(255,255,255,.09);transform:translateY(-2px);border-color:var(--gold-2)}
   .chan .ico{width:44px;height:44px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:rgba(198,154,84,.18);color:var(--gold-2)}
   .chan:hover .ico{background:var(--gold);color:#2a1a0d}
   .chan .ico svg{width:22px;height:22px}
-  .chan .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#d3bd9c}
+  .chan .k{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#d3bd9c}
   .chan .v{font-weight:600;font-size:1.05rem;margin-top:2px;overflow-wrap:anywhere}
   .chan>span{min-width:0}
 
-  /* Contact form */
   .contact-form{max-width:560px;margin:34px auto 0;text-align:left}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .field{display:block;margin-bottom:16px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#d3bd9c;font-weight:600}
-  .field input,.field textarea{display:block;width:100%;margin-top:8px;padding:13px 14px;border-radius:10px;border:1px solid rgba(246,239,228,.22);background:rgba(255,255,255,.06);color:var(--cream);font-family:inherit;font-size:1rem;font-weight:400;letter-spacing:normal;text-transform:none;transition:border-color .2s,background .2s}
+  .field{display:block;margin-bottom:16px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#e6d3b4;font-weight:600}
+  .field input,.field textarea{display:block;width:100%;margin-top:8px;padding:14px 15px;border-radius:10px;border:1px solid rgba(246,239,228,.45);background:rgba(255,255,255,.12);color:var(--cream);font-family:inherit;font-size:1rem;font-weight:400;letter-spacing:normal;text-transform:none;transition:border-color .2s,background .2s}
   .field textarea{resize:vertical;min-height:112px}
-  .field input::placeholder,.field textarea::placeholder{color:#a68f74}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-2);background:rgba(255,255,255,.09)}
+  .field input::placeholder,.field textarea::placeholder{color:#b7a184}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-2);background:rgba(255,255,255,.16)}
   .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
   .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
   .form-consent{font-size:.8rem;color:#c9b393;max-width:34ch;margin:0}
@@ -141,184 +156,96 @@
   .form-status[hidden]{display:none}
   .form-status.ok{background:rgba(130,189,146,.16);border:1px solid rgba(130,189,146,.5);color:#e7f3ea}
   .form-status.err{background:rgba(224,120,90,.14);border:1px solid rgba(224,120,90,.5);color:#f3ddd4}
-  .contact-or{text-align:center;color:#c9b393;font-size:.86rem;margin:40px 0 18px}
+  .contact-or{text-align:center;color:#c9b393;font-size:.86rem;margin:44px 0 18px}
 
   footer{background:#3a2415;color:#c9b393;padding:26px 0}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
-  .paw{display:inline-flex;line-height:0}
-  .paw svg{height:11px;width:auto;display:block;opacity:.92}
   footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
   footer a:hover{color:var(--gold-2)}
-  .linklike{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
-  .linklike:hover{color:var(--gold-2)}
+  .paw{display:inline-flex;line-height:0}
+  .paw svg{height:14px;width:auto;display:block;opacity:.92}
 
-  /* Cookie consent */
-  .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:540px;margin:0 auto;background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 50px -20px rgba(74,47,28,.55);padding:18px 20px;z-index:100;display:flex;flex-direction:column;gap:12px}
-  .cookie-banner[hidden]{display:none}
-  .cookie-banner p{font-size:.9rem;color:var(--muted)}
-  .cookie-banner a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
-  .cookie-actions{display:flex;gap:10px;justify-content:flex-end}
-  .cookie-btn{padding:9px 18px;border-radius:30px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s}
-  .cookie-btn.solid{background:var(--choc);color:var(--cream)}
-  .cookie-btn.solid:hover{transform:translateY(-1px);background:#3a2415}
-  .cookie-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-  .cookie-btn.ghost:hover{border-color:var(--gold)}
+  /* ---- Cookie/pixel notice (aviso mínimo) ---- */
+  .cookie-note{position:fixed;left:16px;right:16px;bottom:16px;max-width:640px;margin:0 auto;background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px -20px rgba(74,47,28,.5);padding:14px 18px;z-index:100;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+  .cookie-note[hidden]{display:none}
+  .cookie-note p{font-size:.86rem;color:var(--muted);margin:0;flex:1 1 300px}
+  .cookie-note a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+  .cookie-ok{flex:0 0 auto;padding:10px 22px;border-radius:30px;border:0;background:var(--choc);color:var(--cream);font-family:inherit;font-weight:600;font-size:.88rem;cursor:pointer;transition:transform .2s,background .2s}
+  .cookie-ok:hover{transform:translateY(-1px);background:#3a2415}
 
-  /* Cookie preferences modal */
-  .cookie-modal{position:fixed;inset:0;z-index:110;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,20,12,.55)}
-  .cookie-modal[hidden]{display:none}
-  .cookie-modal-card{background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:16px;max-width:470px;width:100%;padding:26px;box-shadow:0 30px 70px -25px rgba(0,0,0,.6);max-height:90vh;overflow-y:auto}
-  .cookie-modal-card h2{font-family:'Petrona',serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px}
-  .cookie-modal-intro{font-size:.9rem;color:var(--muted);margin-bottom:8px}
-  .cookie-cat{border-top:1px solid var(--line);padding:16px 0}
-  .cookie-cat p{font-size:.86rem;color:var(--muted);margin-top:6px}
-  .cookie-cat-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .cookie-cat-name{font-weight:600;font-size:1rem}
-  .cookie-badge{font-size:.72rem;color:var(--gold-deep);background:rgba(138,94,31,.12);border:1px solid var(--line);padding:3px 10px;border-radius:20px;white-space:nowrap}
-  .cookie-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
-  .switch{position:relative;display:inline-block;width:44px;height:26px;flex:0 0 auto}
-  .switch input{position:absolute;opacity:0;width:0;height:0}
-  .switch .slider{position:absolute;inset:0;background:#d9ccb6;border-radius:20px;transition:background .2s;cursor:pointer}
-  .switch .slider::before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-  .switch input:checked + .slider{background:var(--choc)}
-  .switch input:checked + .slider::before{transform:translateX(18px)}
-  .switch input:focus-visible + .slider{outline:2px solid var(--gold);outline-offset:2px}
-
-  /* One authored entrance, on the opening only */
   @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   .rise{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both}
   .rise-2{animation-delay:.1s}
   .rise-3{animation-delay:.2s}
 
   @media(max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:42px}
     .grid{grid-template-columns:1fr 1fr}
     .cell:nth-child(2n){border-right:none}
-    .cell:nth-child(-n+2){border-bottom:1px solid var(--line)}
-    .values-grid{grid-template-columns:1fr;gap:0}
-    .val{padding:22px 0}
+    .cell:nth-child(-n+2){border-bottom:1px solid rgba(246,239,228,.18)}
+    .channels{flex-direction:column;align-items:stretch;gap:16px;max-width:460px;margin-left:auto;margin-right:auto}
+    .chan{width:100%;padding:20px 24px}
+  }
+  @media(max-width:640px){
+    .hero{min-height:540px}
+    .hero-inner{padding-top:44px;padding-bottom:40px}
+    .hero-inner .btn-beige{margin-top:28px}
+    .values-grid{grid-template-columns:1fr}
   }
   @media(max-width:520px){
     .grid{grid-template-columns:1fr}
-    .cell{border-right:none!important;border-bottom:1px solid var(--line)}
+    .cell{border-right:none!important;border-bottom:1px solid rgba(246,239,228,.18)}
     .cell:last-child{border-bottom:none}
-    .channels{flex-direction:column}
-    .chan{justify-content:flex-start}
     .form-row{grid-template-columns:1fr;gap:0}
   }
   @media(prefers-reduced-motion:reduce){*{transition:none!important}.rise{animation:none!important}}
 </style>
 </head>
 <body>
-<!--
-IMPECCABLE DIRECTION CONTRACT (committed — user-chosen 2026-08-13)
-THESIS: Warm artisanal chocolatier world, category standard at full craft fidelity —
-  cream, serif, gold, chocolate. Opens on the brand's national-chocolate stance, then
-  scrolls to the first product.
-OWN-WORLD: Cream ground, Petrona serif display with italic accents, gold + deep chocolate,
-  product photo on a light seamless plate, rounded warm cards.
-STORY: A confectioner reads the "chocolate nacional, feito aqui" stance and the values,
-  scrolls to Trufas Ocas, reads the spec, and messages MPS.
-FIRST VIEWPORT: Serif chamada "Chocolate nacional, feito aqui." + supporting line + scroll cue.
-FORM: Canon (category default), committed at full fidelity per client choice.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
--->
+
 <header>
   <div class="wrap bar">
     <a class="brand" href="#topo"><img class="brand-logo" src="assets/logo.svg" alt="" width="32" height="40">MPS <span>Alimentos</span></a>
-    <div class="bar-right">
-      <a class="nav" href="#contato">Contato</a>
-      <a class="nav-ig" href="https://instagram.com/mps.alimentos" target="_blank" rel="noopener" aria-label="Instagram @mps.alimentos">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" stroke="none"/></svg>
-      </a>
-    </div>
   </div>
 </header>
 
 <main id="topo">
-  <section class="intro">
-    <div class="wrap intro-inner">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img class="hero-img" src="assets/hero.jpg" alt="Calda de chocolate brilhante em movimento." fetchpriority="high" decoding="async">
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-inner">
       <h1 class="rise">Chocolate nacional,<br><em>feito aqui.</em></h1>
-      <p class="intro-sub rise rise-2">Produtos brasileiros, para a confeitaria nacional.</p>
-      <a class="scroll-cue rise rise-3" href="#produto">Conheça o produto <span aria-hidden="true">↓</span></a>
+      <p class="hero-sub rise rise-2">Produtos brasileiros, para a confeitaria nacional.</p>
+      <a class="btn btn-beige rise rise-3" href="#produto">Conheça o produto</a>
     </div>
   </section>
 
-  <section class="about">
-    <div class="wrap about-inner">
-      <h2 class="section-title">Quem somos</h2>
-      <p>Produzimos aqui, com chocolate nacional, um produto com o mesmo desempenho, o mesmo acabamento e o mesmo resultado final que você já conhece.</p>
-      <p>Nada muda na sua receita — <em>muda o que você paga</em> e a certeza de encontrar quando precisar.</p>
-    </div>
-  </section>
-
-  <section class="values">
+  <!-- ============ PRODUTO (faixa marrom escuro) ============ -->
+  <section class="product-dark" id="produto">
     <div class="wrap">
-      <h2 class="section-title">O que nos move</h2>
-      <div class="values-grid">
-        <div class="val">
-          <h3>Produção nacional</h3>
-          <p>Menos dependência de importação, mais estabilidade de fornecimento.</p>
-        </div>
-        <div class="val">
-          <h3>Chocolate brasileiro</h3>
-          <p>Valorizamos a cadeia produtiva do cacau nacional.</p>
-        </div>
-        <div class="val">
-          <h3>Qualidade competitiva</h3>
-          <p>Desenvolvidos para competir com os produtos similares que são importados.</p>
-        </div>
-        <div class="val">
-          <h3>Proximidade</h3>
-          <p>Atendimento direto, sem intermediários e entrega rápida.</p>
-        </div>
+      <div class="pd-head">
+        <h2><span class="ph">A casca pronta.</span> <span class="ph"><em>O recheio é seu.</em></span></h2>
       </div>
-      <p class="values-close">Queremos atender a necessidade do mercado nacional com produtos locais e acessíveis.</p>
-    </div>
-  </section>
 
-  <section class="product" id="produto">
-    <div class="wrap hero-grid">
-      <div>
-        <h2 class="product-name">Trufas <em>Ocas</em></h2>
-        <p class="lead">Cascas de chocolate ao leite, delicadas e prontas para rechear. Você cria o recheio; a casca perfeita já está pronta.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://wa.me/5541988506691?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20Trufas%20Ocas%20da%20MPS%20Alimentos." target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-            Pedir no WhatsApp
-          </a>
-          <a class="btn btn-ghost" href="#contato">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-            Preencher formulário
-          </a>
-          <a class="btn btn-ghost" href="mailto:joao@mpsalimentos.com?subject=Interesse%20nas%20Trufas%20Ocas">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 5 8-5"/></svg>
-            E-mail
-          </a>
-        </div>
-      </div>
-      <div class="photo">
+      <div class="pd-photo">
         <div class="halo"></div>
         <div class="frame">
-          <img src="assets/trufas-ocas.png" width="374" height="302" alt="Três trufas ocas de chocolate ao leite, com casca lisa e brilhante e leve relevo na superfície.">
+          <img src="assets/trufas-ocas.png" width="374" height="302" loading="lazy" decoding="async" alt="Três trufas ocas de chocolate ao leite, com casca lisa e brilhante e leve relevo na superfície.">
         </div>
         <div class="cap">Casca lisa e brilhante, Ø 25 mm</div>
       </div>
-    </div>
-  </section>
 
-  <section class="value">
-    <div class="wrap">
-      <div class="inner">
-        <h2>A casca pronta. <em>O recheio é seu.</em></h2>
-        <p>Uma base neutra e regular que recebe qualquer recheio — ganache, brigadeiro, licor ou frutas. Ganhe tempo na produção e entregue trufas com acabamento uniforme, sem moldar casca por casca.</p>
+      <div class="pd-body">
+        <h3 class="pd-name">Trufas <em>Ocas</em></h3>
+        <p class="pd-lead">Cascas de chocolate ao leite, delicadas e prontas para rechear. Você cria o recheio; a casca perfeita já está pronta.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="specs" aria-label="Especificações">
-    <div class="wrap">
-      <div class="inner">
+      <div class="spec-panel">
+        <div class="spec-note">
+          <p>Uma <strong>base neutra e regular</strong> que recebe <strong>qualquer recheio</strong>: ganache, brigadeiro, licor ou frutas.</p>
+          <p><strong>Ganhe tempo na produção</strong> e entregue trufas com <strong>acabamento uniforme</strong>, sem moldar casca por casca.</p>
+        </div>
         <div class="grid">
           <div class="cell"><div class="k">Sabor</div><div class="v">Ao leite<small>Chocolate nacional</small></div></div>
           <div class="cell"><div class="k">Diâmetro</div><div class="v">Ø 25 mm<small>por unidade</small></div></div>
@@ -326,9 +253,41 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <div class="cell"><div class="k">Caixa</div><div class="v">126<small>unidades</small></div></div>
         </div>
       </div>
+
+      <div class="pd-cta">
+        <a class="btn btn-gold" href="https://wa.me/5541988506691?text=Ol%C3%A1!%20Tenho%20interesse%20nas%20Trufas%20Ocas%20da%20MPS%20Alimentos." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+          Pedir no WhatsApp
+        </a>
+        <a class="btn btn-outline" href="#contato">Pedir amostras</a>
+      </div>
     </div>
   </section>
 
+  <!-- ============ O QUE NOS MOVE ============ -->
+  <section class="split-sec tinted">
+    <div class="wrap">
+      <h2 class="section-title center">O que nos move</h2>
+      <div class="values-grid">
+        <div class="val"><h3>Produção nacional</h3><p>Menos dependência de importação, mais estabilidade de fornecimento.</p></div>
+        <div class="val"><h3>Chocolate brasileiro</h3><p>Valorizamos a cadeia produtiva do cacau nacional.</p></div>
+        <div class="val"><h3>Qualidade competitiva</h3><p>Desenvolvidos para competir com os produtos similares que são importados.</p></div>
+        <div class="val"><h3>Proximidade</h3><p>Atendimento direto, sem intermediários e entrega rápida.</p></div>
+      </div>
+      <p class="values-close">Queremos atender a necessidade do mercado nacional com produtos locais e acessíveis.</p>
+    </div>
+  </section>
+
+  <!-- ============ QUEM SOMOS ============ -->
+  <section class="split-sec">
+    <div class="wrap about-wrap">
+      <h2 class="section-title center">Quem somos</h2>
+      <p class="about-p">Produzimos aqui, com chocolate nacional, um produto com o mesmo desempenho, o mesmo acabamento e o mesmo resultado final que você já conhece.</p>
+      <p class="about-p">Nada muda na sua receita. O que muda é <em>o que você paga</em> e a certeza de encontrar quando precisar.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
   <section class="contact" id="contato">
     <div class="wrap">
       <div class="inner">
@@ -338,14 +297,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <form class="contact-form" id="contact-form" novalidate>
           <div class="form-row">
             <label class="field">Nome
-              <input type="text" name="name" required autocomplete="name" maxlength="80">
+              <input type="text" name="name" required autocomplete="name" maxlength="80" placeholder="Seu nome ou da confeitaria">
             </label>
             <label class="field">E-mail
-              <input type="email" name="email" required autocomplete="email" maxlength="120">
+              <input type="email" name="email" required autocomplete="email" maxlength="120" placeholder="voce@email.com">
             </label>
           </div>
           <label class="field">Mensagem
-            <textarea name="message" rows="4" required maxlength="2000"></textarea>
+            <textarea name="message" rows="4" required maxlength="2000" placeholder="Quero amostras, valores e prazos das Trufas Ocas."></textarea>
           </label>
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-foot">
@@ -377,7 +336,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <footer>
   <div class="wrap">
-    <span>© 2026 MPS Alimentos · <a href="privacidade.html">Política de Privacidade</a> · <button type="button" class="linklike" onclick="mpsOpenConsent()">Cookies</button></span>
+    <span>© 2026 MPS Alimentos · <a href="privacidade.html">Política de Privacidade</a></span>
     <span class="paw" role="img" aria-label="MPS Alimentos">
       <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
         <ellipse cx="24" cy="19" rx="7" ry="10" transform="rotate(-18 24 19)"/>
@@ -390,117 +349,27 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
 </footer>
 
-<div id="cookie-banner" class="cookie-banner" hidden role="dialog" aria-label="Aviso de cookies" aria-live="polite">
-  <p>Usamos cookies para analisar o tráfego e melhorar o site. Você escolhe o que permitir. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
-  <div class="cookie-actions">
-    <button id="cookie-prefs" class="cookie-btn ghost" type="button">Personalizar</button>
-    <button id="cookie-accept" class="cookie-btn solid" type="button">Aceitar</button>
-  </div>
-</div>
-
-<div id="cookie-modal" class="cookie-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
-  <div class="cookie-modal-card">
-    <h2 id="cookie-modal-title">Preferências de cookies</h2>
-    <p class="cookie-modal-intro">Escolha quais dados podem ser coletados. Você pode alterar isso quando quiser pelo link “Cookies” no rodapé.</p>
-
-    <div class="cookie-cat">
-      <div class="cookie-cat-head">
-        <span class="cookie-cat-name">Necessários</span>
-        <span class="cookie-badge">Sempre ativos</span>
-      </div>
-      <p>Essenciais para o site funcionar e para lembrar as suas escolhas. Não rastreiam a sua navegação.</p>
-    </div>
-
-    <div class="cookie-cat">
-      <div class="cookie-cat-head">
-        <span class="cookie-cat-name">Análise e desempenho</span>
-        <label class="switch"><input type="checkbox" id="cookie-analytics"><span class="slider"></span></label>
-      </div>
-      <p>Google Analytics: ajuda a entender como o site é usado, de forma agregada. Usa cookies.</p>
-    </div>
-
-    <div class="cookie-modal-actions">
-      <button id="cookie-reject-all" class="cookie-btn ghost" type="button">Recusar todas</button>
-      <button id="cookie-save" class="cookie-btn solid" type="button">Salvar preferências</button>
-    </div>
-  </div>
+<div id="cookie-note" class="cookie-note" hidden role="region" aria-label="Aviso de cookies">
+  <p>Usamos cookies e tecnologias de medição para melhorar a sua experiência e para fins de publicidade. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
+  <button id="cookie-ok" class="cookie-ok" type="button">Ok, entendi</button>
 </div>
 
 <script>
+// Aviso mínimo de cookies/pixel (não bloqueia nada)
 (function(){
-  var KEY = 'mps-consent-v2';
-  var GA_ID = 'G-9RMZFXB8KT';
-  var banner, modal, chkAnalytics, gaLoaded = false, analyticsOn = false;
-
-  function loadGA(){
-    if (gaLoaded) return; gaLoaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', GA_ID);
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-    document.head.appendChild(s);
-  }
-  function applyConsent(analytics){
-    analyticsOn = !!analytics;
-    window['ga-disable-' + GA_ID] = !analytics; // respeitado pelo GA mesmo se já carregado
-    if (analytics) loadGA();
-  }
-  function save(analytics){ try{ localStorage.setItem(KEY, JSON.stringify({analytics: !!analytics})); }catch(e){} }
-  function read(){ try{ return JSON.parse(localStorage.getItem(KEY)); }catch(e){ return null; } }
-
-  function openModal(){
-    if (!modal) return;
-    var c = read();
-    chkAnalytics.checked = c ? !!c.analytics : false;
-    modal.hidden = false;
-  }
-  function closeModal(){ if (modal) modal.hidden = true; }
-  function hideBanner(){ if (banner) banner.hidden = true; }
-
-  // Link "Cookies" no rodapé abre o painel de preferências
-  window.mpsOpenConsent = function(){ openModal(); };
-
-  function track(name){ if (analyticsOn && window.gtag){ try{ gtag('event', name); }catch(e){} } }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    banner = document.getElementById('cookie-banner');
-    modal = document.getElementById('cookie-modal');
-    chkAnalytics = document.getElementById('cookie-analytics');
-
-    var saved = read();
-    if (saved) applyConsent(saved.analytics);
-    else banner.hidden = false;
-
-    document.getElementById('cookie-accept').addEventListener('click', function(){
-      save(true); applyConsent(true); hideBanner(); closeModal();
-    });
-    document.getElementById('cookie-prefs').addEventListener('click', openModal);
-    document.getElementById('cookie-save').addEventListener('click', function(){
-      var a = chkAnalytics.checked; save(a); applyConsent(a); hideBanner(); closeModal();
-    });
-    document.getElementById('cookie-reject-all').addEventListener('click', function(){
-      save(false); applyConsent(false); hideBanner(); closeModal();
-    });
-    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-
-    // Rastreio de contato (só registra com consentimento de análise)
-    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
-      a.addEventListener('click', function(){ track('clique_whatsapp'); });
-    });
-    document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
-      a.addEventListener('click', function(){ track('clique_email'); });
-    });
-    document.querySelectorAll('a[href*="instagram.com/"]').forEach(function(a){
-      a.addEventListener('click', function(){ track('clique_instagram'); });
-    });
+  var KEY = 'mps-note-v1';
+  var el = document.getElementById('cookie-note');
+  var ok = document.getElementById('cookie-ok');
+  try { if (localStorage.getItem(KEY) !== '1') el.hidden = false; } catch(e){ el.hidden = false; }
+  ok.addEventListener('click', function(){
+    el.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch(e){}
   });
 })();
 </script>
 
 <script>
+// Formulário de contato -> Worker /api/contact (envio via Resend)
 (function(){
   var form = document.getElementById('contact-form');
   if (!form) return;
@@ -510,7 +379,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    if (form.elements['_honey'].value) return; // provável bot
+    if (form.elements['_honey'].value) return;
     if (!form.checkValidity()){ form.reportValidity(); return; }
 
     status.hidden = false;
@@ -534,9 +403,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         status.className = 'form-status ok';
         status.textContent = 'Mensagem enviada! Vamos responder em breve.';
         form.reset();
-      } else {
-        throw new Error('fail');
-      }
+      } else { throw new Error('fail'); }
     })
     .catch(function(){
       status.className = 'form-status err';
