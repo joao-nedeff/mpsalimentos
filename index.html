@@ -32,6 +32,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/consent.css">
 <style>
   :root{
     --cream:#f6efe4;
@@ -173,13 +174,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
   .paw{display:inline-flex;line-height:0}
   .paw svg{height:14px;width:auto;display:block;opacity:.92}
 
-  /* ---- Cookie/pixel notice (aviso mínimo) ---- */
-  .cookie-note{position:fixed;left:16px;right:16px;bottom:16px;max-width:640px;margin:0 auto;background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px -20px rgba(74,47,28,.5);padding:14px 18px;z-index:100;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
-  .cookie-note[hidden]{display:none}
-  .cookie-note p{font-size:.86rem;color:var(--muted);margin:0;flex:1 1 300px}
-  .cookie-note a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
-  .cookie-ok{flex:0 0 auto;padding:10px 22px;border-radius:30px;border:0;background:var(--choc);color:var(--cream);font-family:inherit;font-weight:600;font-size:.88rem;cursor:pointer;transition:transform .2s,background .2s}
-  .cookie-ok:hover{transform:translateY(-1px);background:#3a2415}
+  /* Aviso de cookies: estilos em assets/consent.css, marcação/lógica em assets/consent.js */
 
   @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   .rise{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both}
@@ -347,7 +342,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
 
 <footer>
   <div class="wrap">
-    <span>© 2026 MPS Alimentos · <a href="privacidade.html">Política de Privacidade</a></span>
+    <span>© 2026 MPS Alimentos · <a href="privacidade.html">Política de Privacidade</a> · <button type="button" class="linklike" onclick="mpsOpenConsent()">Cookies</button></span>
     <span class="paw" role="img" aria-label="MPS Alimentos">
       <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
         <ellipse cx="24" cy="19" rx="7" ry="10" transform="rotate(-18 24 19)"/>
@@ -360,24 +355,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
   </div>
 </footer>
 
-<div id="cookie-note" class="cookie-note" hidden role="region" aria-label="Aviso de cookies">
-  <p>Usamos cookies e tecnologias de medição para melhorar a sua experiência e para fins de publicidade. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
-  <button id="cookie-ok" class="cookie-ok" type="button">Ok, entendi</button>
-</div>
-
-<script>
-// Aviso mínimo de cookies/pixel (não bloqueia nada)
-(function(){
-  var KEY = 'mps-note-v1';
-  var el = document.getElementById('cookie-note');
-  var ok = document.getElementById('cookie-ok');
-  try { if (localStorage.getItem(KEY) !== '1') el.hidden = false; } catch(e){ el.hidden = false; }
-  ok.addEventListener('click', function(){
-    el.hidden = true;
-    try { localStorage.setItem(KEY, '1'); } catch(e){}
-  });
-})();
-</script>
+<!-- Aviso/preferências de cookies são injetados por assets/consent.js -->
 
 <script>
 // Formulário de contato -> Worker /api/contact (envio via Resend)
@@ -424,5 +402,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
   });
 })();
 </script>
+
+<script src="assets/consent.js" defer></script>
 </body>
 </html>

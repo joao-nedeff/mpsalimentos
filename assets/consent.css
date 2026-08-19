@@ -1,0 +1,36 @@
+/* Consentimento de cookies (banner + preferências) — MPS Alimentos */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:540px;margin:0 auto;background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 50px -20px rgba(74,47,28,.55);padding:18px 20px;z-index:100;display:flex;flex-direction:column;gap:12px}
+.cookie-banner[hidden]{display:none}
+.cookie-banner p{font-size:.9rem;color:var(--muted);line-height:1.5;margin:0}
+.cookie-banner a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px}
+.cookie-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.cookie-btn{padding:9px 18px;border-radius:30px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s}
+.cookie-btn.solid{background:var(--choc);color:var(--cream)}
+.cookie-btn.solid:hover{transform:translateY(-1px);background:#3a2415}
+.cookie-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.cookie-btn.ghost:hover{border-color:var(--gold-deep)}
+
+.cookie-modal{position:fixed;inset:0;z-index:110;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,20,12,.55)}
+.cookie-modal[hidden]{display:none}
+.cookie-modal-card{background:var(--cream);color:var(--ink);border:1px solid var(--line);border-radius:16px;max-width:470px;width:100%;padding:26px;box-shadow:0 30px 70px -25px rgba(0,0,0,.6);max-height:90vh;overflow-y:auto}
+.cookie-modal-card h2{font-family:'Petrona',Georgia,serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:8px}
+.cookie-modal-intro{font-size:.9rem;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.cookie-cat{border-top:1px solid var(--line);padding:16px 0}
+.cookie-cat p{font-size:.86rem;color:var(--muted);margin-top:6px;line-height:1.5}
+.cookie-cat-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cookie-cat-name{font-weight:600;font-size:1rem}
+.cookie-badge{font-size:.72rem;color:var(--gold-deep);background:rgba(138,94,31,.12);border:1px solid var(--line);padding:3px 10px;border-radius:20px;white-space:nowrap}
+.cookie-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+.switch{position:relative;display:inline-block;width:44px;height:26px;flex:0 0 auto}
+.switch input{position:absolute;opacity:0;width:0;height:0}
+.switch .slider{position:absolute;inset:0;background:#d9ccb6;border-radius:20px;transition:background .2s;cursor:pointer}
+.switch .slider::before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.switch input:checked + .slider{background:var(--choc)}
+.switch input:checked + .slider::before{transform:translateX(18px)}
+.switch input:focus-visible + .slider{outline:2px solid var(--gold-deep);outline-offset:2px}
+
+/* Botão "Cookies" no rodapé (parece link) */
+.linklike{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.linklike:hover{color:var(--gold-deep)}
+
+@media(prefers-reduced-motion:reduce){.cookie-btn,.switch .slider,.switch .slider::before{transition:none}}

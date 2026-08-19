@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/consent.css">
 <style>
   :root{
     --cream:#f6efe4;--ink:#2c2016;--muted:#6f5e49;--gold-deep:#8a5e1f;
@@ -51,7 +52,7 @@
 <main>
   <div class="wrap">
     <h1>Política de Privacidade</h1>
-    <p class="updated">Última atualização: 14 de agosto de 2026</p>
+    <p class="updated">Última atualização: 19 de agosto de 2026</p>
 
     <p class="lead">Esta política explica quais dados o site <strong>mpsalimentos.com</strong> coleta, como são usados e quais são os seus direitos, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, a LGPD).</p>
 
@@ -70,15 +71,16 @@
     <p>Se você preencher o nosso <strong>formulário de contato</strong>, ou nos escrever por WhatsApp ou e-mail, coletamos os dados que você mesmo nos envia (nome, e-mail e mensagem), usados <strong>exclusivamente para responder e atender à sua solicitação</strong>. O envio do formulário é processado pelo serviço <strong>Resend</strong>, que entrega a sua mensagem no nosso e-mail; não usamos esses dados para marketing.</p>
 
     <h2>3. Cookies e ferramentas de análise</h2>
-    <p>Podemos utilizar o <strong>Pixel da Meta</strong> (Facebook e Instagram) para medir o desempenho e otimizar os nossos anúncios. Esse pixel é carregado junto com o site e pode usar cookies. Exibimos um aviso informando esse uso.</p>
-    <p>Também podemos utilizar o <strong>Cloudflare Web Analytics</strong>, que gera estatísticas de acesso <strong>sem usar cookies</strong> e sem identificar você individualmente.</p>
-    <div class="note">Você pode limitar ou apagar cookies nas configurações do seu navegador. Para controlar anúncios personalizados, use as preferências de anúncios da sua conta da Meta (Facebook/Instagram).</div>
+    <p>Utilizamos o <strong>Google Analytics 4</strong> para entender, de forma agregada, como o site é usado (páginas visitadas, origem do acesso, tipo de dispositivo). O Google Analytics usa cookies e <strong>só é ativado se você aceitar</strong> os cookies de análise no aviso exibido ao entrar no site.</p>
+    <p>Você escolhe o que permitir: pode <strong>aceitar</strong>, <strong>recusar</strong> ou <strong>personalizar</strong> os cookies de análise, e alterar essa escolha quando quiser pelo link <strong>“Cookies”</strong> no rodapé de qualquer página.</p>
+    <p>Podemos também utilizar o <strong>Pixel da Meta</strong> (Facebook e Instagram) para medir e otimizar anúncios, e o <strong>Cloudflare Web Analytics</strong>, que gera estatísticas de acesso <strong>sem usar cookies</strong> e sem identificar você individualmente.</p>
+    <div class="note">Além do controle no próprio site, você pode limitar ou apagar cookies nas configurações do seu navegador. Para controlar anúncios personalizados, use as preferências de anúncios da sua conta da Meta (Facebook/Instagram).</div>
 
     <h2>4. Finalidade e base legal</h2>
     <p>Os dados de navegação e de medição são tratados para entender o interesse pelos nossos produtos, aprimorar o site e divulgar a marca. As bases legais são o <strong>legítimo interesse</strong> (art. 7º, inciso IX) e o seu <strong>consentimento</strong> (art. 7º, inciso I), quando aplicável. Você pode se opor ou revogar a qualquer momento pelos canais indicados nesta política.</p>
 
     <h2>5. Compartilhamento de dados</h2>
-    <p>Os dados são processados por operadores que nos prestam serviço: a <strong>Meta</strong> (Pixel de publicidade), a <strong>Cloudflare</strong> (hospedagem e estatísticas) e o <strong>Resend</strong> (envio do formulário de contato), podendo ser armazenados em servidores fora do Brasil. Não vendemos nem cedemos os seus dados a terceiros. Para mais informações, consulte a <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Política de Privacidade da Meta</a>.</p>
+    <p>Os dados são processados por operadores que nos prestam serviço: o <strong>Google</strong> (Google Analytics), a <strong>Meta</strong> (Pixel de publicidade), a <strong>Cloudflare</strong> (hospedagem e estatísticas) e o <strong>Resend</strong> (envio do formulário de contato), podendo ser armazenados em servidores fora do Brasil. Não vendemos nem cedemos os seus dados a terceiros. Para mais informações, consulte a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a> e a <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Política de Privacidade da Meta</a>.</p>
 
     <h2>6. Por quanto tempo guardamos</h2>
     <p>Os dados de navegação são mantidos pelo período configurado na ferramenta de análise (por padrão, até 14 meses) e depois são automaticamente descartados ou anonimizados.</p>
@@ -104,8 +106,10 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 MPS Alimentos · <a href="index.html">Início</a></span>
+    <span>© 2026 MPS Alimentos · <a href="index.html">Início</a> · <button type="button" class="linklike" onclick="mpsOpenConsent()">Cookies</button></span>
   </div>
 </footer>
+
+<script src="assets/consent.js" defer></script>
 </body>
 </html>

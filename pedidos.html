@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Petrona:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/consent.css">
 <style>
   :root{
     --cream:#f6efe4;--cream-2:#efe6d6;--ink:#2c2016;--muted:#6f5e49;
@@ -228,7 +229,7 @@
 
 <footer>
   <div class="wrap bar2">
-    <span>© 2026 MPS Alimentos · <a href="index.html">Início</a> · <a href="privacidade.html">Privacidade</a></span>
+    <span>© 2026 MPS Alimentos · <a href="index.html">Início</a> · <a href="privacidade.html">Privacidade</a> · <button type="button" class="linklike" onclick="mpsOpenConsent()">Cookies</button></span>
     <span>WhatsApp (41) 98850-6691</span>
   </div>
 </footer>
@@ -278,5 +279,7 @@
   });
 })();
 </script>
+
+<script src="assets/consent.js" defer></script>
 </body>
 </html>
