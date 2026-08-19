@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedidos · MPS Alimentos</title>
-<meta name="description" content="Área de pedidos da MPS Alimentos. Baixe o catálogo das Trufas Ocas e a tabela de valores e faça o seu pedido no atacado pelo WhatsApp.">
+<meta name="description" content="Área de pedidos da MPS Alimentos. Tabela de valores das Trufas Ocas no atacado (caixa Média e Grande) e como fazer o seu pedido pelo WhatsApp.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <meta property="og:title" content="Pedidos · MPS Alimentos">
-<meta property="og:description" content="Baixe o catálogo das Trufas Ocas e a tabela de valores e faça o seu pedido no atacado.">
+<meta property="og:description" content="Tabela de valores das Trufas Ocas no atacado e como fazer o seu pedido.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.mpsalimentos.com/assets/trufas-ocas.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--cream);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{background:var(--cream);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .serif{font-family:'Petrona',Georgia,serif}
   .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
 
@@ -36,37 +36,33 @@
   .back:hover{color:var(--ink);border-color:var(--gold-deep)}
 
   /* ---- Intro ---- */
-  .intro{padding:52px 0 8px;text-align:center}
+  .intro{padding:52px 0 6px;text-align:center}
   .kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
   h1{font-family:'Petrona',serif;font-weight:600;font-size:clamp(2.1rem,5.5vw,3.3rem);letter-spacing:-.02em;line-height:1.08;margin-top:12px}
   h1 em{font-style:italic;color:var(--gold-deep)}
-  .lead{color:var(--muted);font-size:1.1rem;max-width:52ch;margin:18px auto 0;text-wrap:balance}
+  .lead{color:var(--muted);font-size:1.1rem;max-width:54ch;margin:18px auto 0;text-wrap:balance}
 
-  /* ---- Material cards ---- */
-  .material{padding:40px 0 8px}
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 26px 50px -34px rgba(74,47,28,.5);transition:transform .25s,box-shadow .25s}
-  .card:hover{transform:translateY(-3px);box-shadow:0 34px 60px -34px rgba(74,47,28,.6)}
-  .thumb{display:block;position:relative;border-bottom:1px solid var(--line);background:var(--cream-2)}
-  .thumb img{display:block;width:100%;height:auto}
-  .tag{position:absolute;top:12px;right:12px;background:var(--gold-2);color:#3a2415;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:20px;box-shadow:0 4px 12px -4px rgba(58,36,21,.5)}
-  .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
-  .card h2{font-family:'Petrona',serif;font-weight:600;font-size:1.45rem;letter-spacing:-.01em}
-  .card p{color:var(--muted);font-size:.98rem;margin-top:8px;flex:1}
-  .card .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 20px;border-radius:36px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;border:0;transition:transform .2s,background .2s,border-color .2s}
-  .btn svg{width:17px;height:17px}
-  .btn-gold{background:var(--gold-2);color:#2a1a0d;box-shadow:0 12px 26px -14px rgba(198,154,84,.85)}
-  .btn-gold:hover{transform:translateY(-2px);background:#d4a860}
-  .btn-outline{color:var(--choc);border:1px solid var(--line);background:#fff}
-  .btn-outline:hover{transform:translateY(-2px);border-color:var(--gold-deep)}
+  /* ---- Valores ---- */
+  .valores{padding:44px 0 8px}
+  .sec-head{text-align:center;margin-bottom:14px}
+  .sec-head h2{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em}
+  .sec-head .sub{color:var(--muted);margin-top:8px}
+  .price-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:780px;margin:34px auto 0}
+  .pcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 26px 30px;text-align:center;box-shadow:0 26px 50px -34px rgba(74,47,28,.55);transition:transform .25s,box-shadow .25s}
+  .pcard:hover{transform:translateY(-3px);box-shadow:0 34px 60px -34px rgba(74,47,28,.6)}
+  .pbadge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold-2);color:#3a2415;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 18px;border-radius:22px;box-shadow:0 8px 18px -8px rgba(58,36,21,.6);white-space:nowrap}
+  .pname{font-family:'Petrona',serif;font-weight:600;font-size:1.8rem;color:var(--gold-deep);margin-top:6px}
+  .punits{color:var(--muted);font-size:1.02rem;margin-top:4px}
+  .pdiv{height:1px;background:var(--line);width:72%;margin:20px auto}
+  .pfrom{color:var(--muted);font-size:1.02rem;text-decoration:line-through}
+  .pprice{font-family:'Petrona',serif;font-weight:600;font-size:3rem;line-height:1;color:var(--ink);margin-top:3px}
+  .plabel{color:var(--gold-deep);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
+  .specnote{max-width:640px;margin:30px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:1.08rem;color:var(--choc)}
+  .specnote strong{font-style:normal;font-weight:700}
 
   /* ---- Como pedir ---- */
-  .order{padding:52px 0 20px}
-  .order-head{text-align:center;margin-bottom:34px}
-  .order-head h2{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto}
+  .order{padding:50px 0 8px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:32px auto 0}
   .step{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
   .step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--choc);color:var(--cream);font-family:'Petrona',serif;font-weight:600;font-size:1.15rem;margin-bottom:14px}
   .step h3{font-family:'Petrona',serif;font-weight:600;font-size:1.18rem;margin-bottom:6px}
@@ -77,9 +73,11 @@
   .cta h2{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em;color:var(--cream)}
   .cta p{color:#dcc9b0;margin-top:10px;max-width:48ch;margin-left:auto;margin-right:auto}
   .cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .btn-wa{background:var(--gold-2);color:#2a1a0d;font-size:1rem;padding:15px 28px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:36px;font-weight:600;font-size:1rem;text-decoration:none;cursor:pointer;border:0;transition:transform .2s,background .2s,border-color .2s}
+  .btn svg{width:18px;height:18px}
+  .btn-wa{background:var(--gold-2);color:#2a1a0d}
   .btn-wa:hover{transform:translateY(-2px);background:#d4a860}
-  .btn-mail{color:var(--cream);border:1px solid rgba(246,239,228,.35);background:rgba(255,255,255,.05);font-size:1rem;padding:15px 26px}
+  .btn-mail{color:var(--cream);border:1px solid rgba(246,239,228,.35);background:rgba(255,255,255,.05)}
   .btn-mail:hover{transform:translateY(-2px);border-color:var(--gold-2)}
 
   footer{border-top:1px solid var(--line);padding:26px 0;margin-top:46px;color:var(--muted);font-size:.85rem}
@@ -87,9 +85,9 @@
   footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   footer a:hover{color:var(--ink)}
 
-  @media(max-width:720px){
-    .cards{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
+  @media(max-width:680px){
+    .price-cards{grid-template-columns:1fr;max-width:420px}
+    .steps{grid-template-columns:1fr;max-width:460px}
   }
 </style>
 </head>
@@ -106,73 +104,64 @@
   <section class="intro">
     <div class="wrap">
       <p class="kicker">Área de pedidos</p>
-      <h1>Tudo para montar o seu <em>pedido</em></h1>
-      <p class="lead">Baixe o catálogo das Trufas Ocas e a tabela de valores. Depois é só chamar a gente no WhatsApp para fechar o seu pedido no atacado.</p>
+      <h1>Trufas Ocas no <em>atacado</em></h1>
+      <p class="lead">Cascas de chocolate nacional ao leite, prontas para rechear. Confira os valores, escolha a sua caixa e faça o pedido pelo WhatsApp.</p>
     </div>
   </section>
 
-  <section class="material">
+  <section class="valores">
     <div class="wrap">
-      <div class="cards">
-
-        <article class="card">
-          <a class="thumb" href="material/apresentacao-trufas-ocas.pdf" target="_blank" rel="noopener">
-            <span class="tag">Catálogo</span>
-            <img src="material/thumb-apresentacao.jpg" width="900" height="506" alt="Prévia da apresentação das Trufas Ocas da MPS Alimentos.">
-          </a>
-          <div class="card-body">
-            <h2>Catálogo de produtos</h2>
-            <p>Apresentação das Trufas Ocas: o produto, a ficha técnica e por que ele facilita a sua produção.</p>
-            <div class="actions">
-              <a class="btn btn-gold" href="material/apresentacao-trufas-ocas.pdf" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-                Ver / baixar PDF
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="thumb" href="material/tabela-de-valores.pdf" target="_blank" rel="noopener">
-            <span class="tag">Valores</span>
-            <img src="material/thumb-valores.jpg" width="900" height="506" alt="Prévia da tabela de valores das Trufas Ocas.">
-          </a>
-          <div class="card-body">
-            <h2>Tabela de valores</h2>
-            <p>Opções de caixa (Média e Grande) com o preço de lançamento. Confira e monte a quantidade do seu pedido.</p>
-            <div class="actions">
-              <a class="btn btn-gold" href="material/tabela-de-valores.pdf" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-                Ver / baixar PDF
-              </a>
-            </div>
-          </div>
-        </article>
-
+      <div class="sec-head">
+        <h2>Tabela de valores</h2>
+        <p class="sub">Caixa de Trufas Ocas · preço de lançamento</p>
       </div>
+
+      <div class="price-cards">
+        <article class="pcard">
+          <span class="pbadge">Lançamento</span>
+          <div class="pname">Média</div>
+          <div class="punits">126 unidades</div>
+          <div class="pdiv"></div>
+          <div class="pfrom">De R$ 145</div>
+          <div class="pprice">R$ 126</div>
+          <div class="plabel">Preço de lançamento</div>
+        </article>
+
+        <article class="pcard">
+          <span class="pbadge">Lançamento</span>
+          <div class="pname">Grande</div>
+          <div class="punits">504 unidades</div>
+          <div class="pdiv"></div>
+          <div class="pfrom">De R$ 580</div>
+          <div class="pprice">R$ 504</div>
+          <div class="plabel">Preço de lançamento</div>
+        </article>
+      </div>
+
+      <p class="specnote">Chocolate nacional <strong>ao leite</strong> · <strong>Ø 25 mm</strong> · <strong>3,5–4 g</strong> por unidade.</p>
     </div>
   </section>
 
   <section class="order">
     <div class="wrap">
-      <div class="order-head">
+      <div class="sec-head">
         <h2>Como fazer o seu pedido</h2>
       </div>
       <div class="steps">
         <div class="step">
           <div class="n">1</div>
-          <h3>Veja o material</h3>
-          <p>Baixe o catálogo e a tabela de valores acima e escolha o que faz sentido para a sua produção.</p>
+          <h3>Escolha a caixa</h3>
+          <p>Veja os valores acima e defina a caixa (Média ou Grande) e a quantidade que você precisa.</p>
         </div>
         <div class="step">
           <div class="n">2</div>
-          <h3>Monte o pedido</h3>
-          <p>Defina a caixa (Média com 126 ou Grande com 504 unidades) e a quantidade que você precisa.</p>
+          <h3>Fale no WhatsApp</h3>
+          <p>Envie o seu pedido pra gente pelo WhatsApp ou e-mail, com as opções escolhidas.</p>
         </div>
         <div class="step">
           <div class="n">3</div>
-          <h3>Fale com a gente</h3>
-          <p>Chame no WhatsApp com o seu pedido. A gente confirma valores, prazos e a forma de entrega.</p>
+          <h3>Confirme e receba</h3>
+          <p>A gente confirma valores, prazos e a forma de entrega. Simples assim.</p>
         </div>
       </div>
     </div>
