@@ -54,8 +54,12 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
 
   header{padding:22px 0;position:relative;z-index:5}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:14px}
-  .nav-pedidos{font-family:'Hanken Grotesk',sans-serif;font-size:.98rem;font-weight:600;color:var(--gold-deep);text-decoration:none;border:1px solid var(--line);padding:9px 18px;border-radius:30px;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
-  .nav-pedidos:hover{background:var(--gold-2);color:#2a1a0d;border-color:var(--gold-2)}
+  .nav-pedidos{display:inline-flex;align-items:center;gap:8px;font-family:'Hanken Grotesk',sans-serif;font-size:1rem;font-weight:700;color:#2a1a0d;text-decoration:none;background:var(--gold-2);border:0;padding:12px 24px;border-radius:30px;box-shadow:0 12px 26px -12px rgba(169,119,47,.9);transition:transform .2s,background .2s,box-shadow .2s;white-space:nowrap}
+  .nav-pedidos svg{width:17px;height:17px}
+  .nav-pedidos:hover{transform:translateY(-2px);background:#d9ab5f;box-shadow:0 18px 32px -12px rgba(169,119,47,.95)}
+  @keyframes pedidosPulse{0%,100%{box-shadow:0 12px 26px -12px rgba(169,119,47,.9)}50%{box-shadow:0 12px 30px -8px rgba(198,154,84,.95)}}
+  .nav-pedidos{animation:pedidosPulse 2.4s ease-in-out infinite}
+  @media(prefers-reduced-motion:reduce){.nav-pedidos{animation:none}}
   .brand{display:inline-flex;align-items:center;gap:14px;font-family:'Petrona',serif;font-weight:600;font-size:1.7rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
   .brand-logo{height:58px;width:auto;display:block}
   .brand span{color:var(--gold-deep)}
@@ -209,7 +213,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
 <header>
   <div class="wrap bar">
     <a class="brand" href="#topo"><img class="brand-logo" src="assets/logo.svg" alt="" width="32" height="40">MPS <span>Alimentos</span></a>
-    <a class="nav-pedidos" href="pedidos.html">Pedidos</a>
+    <a class="nav-pedidos" href="pedidos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Fazer pedido</a>
   </div>
 </header>
 
