@@ -80,6 +80,27 @@
   .btn-mail{color:var(--cream);border:1px solid rgba(246,239,228,.35);background:rgba(255,255,255,.05)}
   .btn-mail:hover{transform:translateY(-2px);border-color:var(--gold-2)}
 
+  /* ---- Formulário (mesmo da home) ---- */
+  .cta-or{margin:34px 0 0;color:#c9b393;font-size:.9rem}
+  .contact-form{max-width:560px;margin:22px auto 0;text-align:left}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:block;margin-bottom:16px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#e6d3b4;font-weight:600}
+  .field input,.field textarea{display:block;width:100%;margin-top:8px;padding:14px 15px;border-radius:10px;border:1px solid rgba(246,239,228,.45);background:rgba(255,255,255,.12);color:var(--cream);font-family:inherit;font-size:1rem;font-weight:400;letter-spacing:normal;text-transform:none;transition:border-color .2s,background .2s}
+  .field textarea{resize:vertical;min-height:112px}
+  .field input::placeholder,.field textarea::placeholder{color:#b7a184}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-2);background:rgba(255,255,255,.16)}
+  .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+  .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
+  .form-consent{font-size:.8rem;color:#c9b393;max-width:34ch;margin:0}
+  .form-consent a{color:var(--gold-2);text-decoration:underline;text-underline-offset:2px}
+  .btn-send{padding:14px 26px;border-radius:40px;border:0;background:var(--gold-2);color:#2a1a0d;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,background .2s}
+  .btn-send:hover{transform:translateY(-2px);background:#d4a860}
+  .btn-send:disabled{opacity:.6;cursor:default;transform:none}
+  .form-status{margin:16px 0 0;font-size:.92rem;padding:12px 14px;border-radius:10px}
+  .form-status[hidden]{display:none}
+  .form-status.ok{background:rgba(130,189,146,.16);border:1px solid rgba(130,189,146,.5);color:#e7f3ea}
+  .form-status.err{background:rgba(224,120,90,.14);border:1px solid rgba(224,120,90,.5);color:#f3ddd4}
+
   footer{border-top:1px solid var(--line);padding:26px 0;margin-top:46px;color:var(--muted);font-size:.85rem}
   footer .bar2{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
   footer a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
@@ -180,6 +201,27 @@
           Pedir por e-mail
         </a>
       </div>
+
+      <p class="cta-or">ou envie a sua mensagem por aqui</p>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <label class="field">Nome
+            <input type="text" name="name" required autocomplete="name" maxlength="80" placeholder="Seu nome ou da confeitaria">
+          </label>
+          <label class="field">E-mail
+            <input type="email" name="email" required autocomplete="email" maxlength="120" placeholder="voce@email.com">
+          </label>
+        </div>
+        <label class="field">Mensagem
+          <textarea name="message" rows="4" required maxlength="2000" placeholder="Quero fazer um pedido das Trufas Ocas (caixa Média ou Grande) e a quantidade."></textarea>
+        </label>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-foot">
+          <p class="form-consent">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
+          <button type="submit" class="btn-send" id="form-submit">Enviar mensagem</button>
+        </div>
+        <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+      </form>
     </div>
   </section>
 </main>
@@ -190,5 +232,51 @@
     <span>WhatsApp (41) 98850-6691</span>
   </div>
 </footer>
+
+<script>
+// Formulário de pedido -> Worker /api/contact (envio via Resend, mesmo da home)
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  var btn = document.getElementById('form-submit');
+  var ENDPOINT = '/api/contact';
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (form.elements['_honey'].value) return;
+    if (!form.checkValidity()){ form.reportValidity(); return; }
+
+    status.hidden = false;
+    status.className = 'form-status';
+    status.textContent = 'Enviando…';
+    btn.disabled = true;
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: form.elements['name'].value,
+        email: form.elements['email'].value,
+        message: form.elements['message'].value,
+        _honey: form.elements['_honey'].value
+      })
+    })
+    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return { ok: r.ok, d: d }; }); })
+    .then(function(res){
+      if (res.ok && res.d.ok === true){
+        status.className = 'form-status ok';
+        status.textContent = 'Mensagem enviada! Vamos responder em breve.';
+        form.reset();
+      } else { throw new Error('fail'); }
+    })
+    .catch(function(){
+      status.className = 'form-status err';
+      status.textContent = 'Não foi possível enviar agora. Fale pelo WhatsApp ou e-mail acima.';
+    })
+    .finally(function(){ btn.disabled = false; });
+  });
+})();
+</script>
 </body>
 </html>
