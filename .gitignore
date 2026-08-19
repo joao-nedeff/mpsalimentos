@@ -1,2 +1,6 @@
 .DS_Store
 Thumbs.db
+.claude/
+# pastas de trabalho locais (build/scripts, node_modules, fotos originais) — nao publicar
+apresentacao/
+instagram/
