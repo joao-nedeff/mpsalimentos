@@ -13,21 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.mpsalimentos.com/assets/trufas-ocas.png">
 
-<!-- ============================================================
-     META PIXEL: cole o seu Pixel (substitua SEU_PIXEL_ID) e
-     descomente quando tiver o ID. Dispara no carregamento.
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'SEU_PIXEL_ID');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
-     ============================================================ -->
+<!-- Meta Pixel + Google Analytics: carregados sob consentimento em assets/consent.js -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -392,6 +378,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/></nosc
         status.className = 'form-status ok';
         status.textContent = 'Mensagem enviada! Vamos responder em breve.';
         form.reset();
+        if (window.mpsTrack) window.mpsTrack('envio_formulario', 'Lead'); // conversão
       } else { throw new Error('fail'); }
     })
     .catch(function(){
