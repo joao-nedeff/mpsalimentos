@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedidos · MPS Alimentos</title>
-<meta name="description" content="Área de pedidos da MPS Alimentos. Tabela de valores das Trufas Ocas no atacado (caixa Média e Grande) e como fazer o seu pedido pelo WhatsApp.">
+<meta name="description" content="Área de pedidos da MPS Alimentos. Tabela de valores das Trufas Ocas no atacado (caixa Média e Grande) e acesso ao portal de pedidos.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
@@ -61,46 +61,14 @@
   .specnote{max-width:640px;margin:30px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:1.08rem;color:var(--choc)}
   .specnote strong{font-style:normal;font-weight:700}
 
-  /* ---- Como pedir ---- */
+  /* ---- Como pedir: portal ---- */
   .order{padding:50px 0 8px}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:32px auto 0}
-  .step{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
-  .step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--choc);color:var(--cream);font-family:'Petrona',serif;font-weight:600;font-size:1.15rem;margin-bottom:14px}
-  .step h3{font-family:'Petrona',serif;font-weight:600;font-size:1.18rem;margin-bottom:6px}
-  .step p{color:var(--muted);font-size:.96rem}
-
-  /* ---- CTA band ---- */
-  .cta{margin:46px 0 8px;background:var(--choc);color:var(--cream);border-radius:20px;padding:44px 28px;text-align:center}
-  .cta h2{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em;color:var(--cream)}
-  .cta p{color:#dcc9b0;margin-top:10px;max-width:48ch;margin-left:auto;margin-right:auto}
-  .cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:36px;font-weight:600;font-size:1rem;text-decoration:none;cursor:pointer;border:0;transition:transform .2s,background .2s,border-color .2s}
-  .btn svg{width:18px;height:18px}
-  .btn-wa{background:var(--gold-2);color:#2a1a0d}
-  .btn-wa:hover{transform:translateY(-2px);background:#d4a860}
-  .btn-mail{color:var(--cream);border:1px solid rgba(246,239,228,.35);background:rgba(255,255,255,.05)}
-  .btn-mail:hover{transform:translateY(-2px);border-color:var(--gold-2)}
-
-  /* ---- Formulário (mesmo da home) ---- */
-  .cta-or{margin:34px 0 0;color:#c9b393;font-size:.9rem}
-  .contact-form{max-width:560px;margin:22px auto 0;text-align:left}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .field{display:block;margin-bottom:16px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#e6d3b4;font-weight:600}
-  .field input,.field textarea{display:block;width:100%;margin-top:8px;padding:14px 15px;border-radius:10px;border:1px solid rgba(246,239,228,.45);background:rgba(255,255,255,.12);color:var(--cream);font-family:inherit;font-size:1rem;font-weight:400;letter-spacing:normal;text-transform:none;transition:border-color .2s,background .2s}
-  .field textarea{resize:vertical;min-height:112px}
-  .field input::placeholder,.field textarea::placeholder{color:#b7a184}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold-2);background:rgba(255,255,255,.16)}
-  .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
-  .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
-  .form-consent{font-size:.8rem;color:#c9b393;max-width:34ch;margin:0}
-  .form-consent a{color:var(--gold-2);text-decoration:underline;text-underline-offset:2px}
-  .btn-send{padding:14px 26px;border-radius:40px;border:0;background:var(--gold-2);color:#2a1a0d;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,background .2s}
-  .btn-send:hover{transform:translateY(-2px);background:#d4a860}
-  .btn-send:disabled{opacity:.6;cursor:default;transform:none}
-  .form-status{margin:16px 0 0;font-size:.92rem;padding:12px 14px;border-radius:10px}
-  .form-status[hidden]{display:none}
-  .form-status.ok{background:rgba(130,189,146,.16);border:1px solid rgba(130,189,146,.5);color:#e7f3ea}
-  .form-status.err{background:rgba(224,120,90,.14);border:1px solid rgba(224,120,90,.5);color:#f3ddd4}
+  .portal{max-width:640px;margin:26px auto 0;background:var(--choc);color:var(--cream);border-radius:20px;padding:40px 28px;text-align:center}
+  .portal p{color:#dcc9b0;max-width:46ch;margin:0 auto}
+  .portal .btn-portal{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;padding:16px 30px;border-radius:36px;background:var(--gold-2);color:#2a1a0d;font-weight:700;font-size:1.05rem;text-decoration:none;box-shadow:0 12px 26px -12px rgba(169,119,47,.9);transition:transform .2s,background .2s}
+  .portal .btn-portal:hover{transform:translateY(-2px);background:#d9ab5f}
+  .portal .btn-portal svg{width:18px;height:18px}
+  .portal .small{font-size:.9rem;color:#c9b393;margin-top:16px}
 
   footer{border-top:1px solid var(--line);padding:26px 0;margin-top:46px;color:var(--muted);font-size:.85rem}
   footer .bar2{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -126,7 +94,7 @@
   <section class="intro">
     <div class="wrap">
       <h1>Trufas Ocas</h1>
-      <p class="lead">Confira os valores, escolha a sua caixa e faça o pedido pelo WhatsApp. Entregas apenas para a região de Curitiba.</p>
+      <p class="lead">Confira os valores e faça o seu pedido pelo portal, com a data de entrega que você precisa. Entregas apenas para a região de Curitiba.</p>
     </div>
   </section>
 
@@ -168,61 +136,14 @@
       <div class="sec-head">
         <h2>Como fazer o seu pedido</h2>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="n">1</div>
-          <h3>Escolha a caixa</h3>
-          <p>Veja os valores acima e defina a caixa (Média ou Grande) e a quantidade que você precisa.</p>
-        </div>
-        <div class="step">
-          <div class="n">2</div>
-          <h3>Fale no WhatsApp</h3>
-          <p>Envie o seu pedido pra gente pelo WhatsApp ou e-mail, com as opções escolhidas.</p>
-        </div>
-        <div class="step">
-          <div class="n">3</div>
-          <h3>Confirme e receba</h3>
-          <p>A gente confirma valores, prazos e a forma de entrega. Simples assim.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="cta">
-      <h2>Pronto para pedir?</h2>
-      <p>Atendemos confeitarias, docerias e produção em escala. Peça também as suas amostras.</p>
-      <div class="actions">
-        <a class="btn btn-wa" href="https://wa.me/5541988506691?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20das%20Trufas%20Ocas%20da%20MPS%20Alimentos." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-          Pedir no WhatsApp
+      <div class="portal">
+        <p>No portal você escolhe as caixas, informa a data de entrega e acompanha cada pedido, do recebimento até a entrega.</p>
+        <a class="btn-portal" href="https://pedidos.mpsalimentos.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Acessar o portal de pedidos
         </a>
-        <a class="btn btn-mail" href="mailto:joao@mpsalimentos.com?subject=Pedido%20Trufas%20Ocas">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 5 8-5"/></svg>
-          Pedir por e-mail
-        </a>
+        <p class="small">Primeira vez? O cadastro da confeitaria é feito no próprio portal e leva poucos minutos.</p>
       </div>
-
-      <p class="cta-or">ou envie a sua mensagem por aqui</p>
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="form-row">
-          <label class="field">Nome
-            <input type="text" name="name" required autocomplete="name" maxlength="80" placeholder="Seu nome ou da confeitaria">
-          </label>
-          <label class="field">E-mail
-            <input type="email" name="email" required autocomplete="email" maxlength="120" placeholder="voce@email.com">
-          </label>
-        </div>
-        <label class="field">Mensagem
-          <textarea name="message" rows="4" required maxlength="2000" placeholder="Quero fazer um pedido das Trufas Ocas (caixa Média ou Grande) e a quantidade."></textarea>
-        </label>
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="form-foot">
-          <p class="form-consent">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
-          <button type="submit" class="btn-send" id="form-submit">Enviar mensagem</button>
-        </div>
-        <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
-      </form>
     </div>
   </section>
 </main>
@@ -233,52 +154,6 @@
     <span>WhatsApp (41) 98850-6691</span>
   </div>
 </footer>
-
-<script>
-// Formulário de pedido -> Worker /api/contact (envio via Resend, mesmo da home)
-(function(){
-  var form = document.getElementById('contact-form');
-  if (!form) return;
-  var status = document.getElementById('form-status');
-  var btn = document.getElementById('form-submit');
-  var ENDPOINT = '/api/contact';
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (form.elements['_honey'].value) return;
-    if (!form.checkValidity()){ form.reportValidity(); return; }
-
-    status.hidden = false;
-    status.className = 'form-status';
-    status.textContent = 'Enviando…';
-    btn.disabled = true;
-
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: form.elements['name'].value,
-        email: form.elements['email'].value,
-        message: form.elements['message'].value,
-        _honey: form.elements['_honey'].value
-      })
-    })
-    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return { ok: r.ok, d: d }; }); })
-    .then(function(res){
-      if (res.ok && res.d.ok === true){
-        status.className = 'form-status ok';
-        status.textContent = 'Mensagem enviada! Vamos responder em breve.';
-        form.reset();
-      } else { throw new Error('fail'); }
-    })
-    .catch(function(){
-      status.className = 'form-status err';
-      status.textContent = 'Não foi possível enviar agora. Fale pelo WhatsApp ou e-mail acima.';
-    })
-    .finally(function(){ btn.disabled = false; });
-  });
-})();
-</script>
 
 <script src="assets/consent.js" defer></script>
 </body>
