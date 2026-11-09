@@ -63,6 +63,25 @@
      por no máximo 1,5 s. Sem JavaScript ou sem resposta, valem os valores escritos aqui. */
   .pjs .price-cards{opacity:0}
   .pjs.pok .price-cards{opacity:1;transition:opacity .25s}
+  /* Abas Chocolate / Cobertura */
+  .tabs{display:flex;justify-content:center;gap:6px;width:max-content;max-width:100%;margin:26px auto 0;padding:5px;border-radius:40px;background:#fff;border:1px solid var(--line)}
+  .tabs [role=tab]{font:inherit;font-weight:600;font-size:1rem;color:var(--muted);background:none;border:0;border-radius:32px;padding:11px 26px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s}
+  .tabs [role=tab]:hover{color:var(--ink)}
+  .tabs [role=tab][aria-selected=true]{background:var(--choc);color:var(--cream)}
+  .tabs [role=tab]:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px}
+  .tab-tag{white-space:nowrap;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:12px;background:var(--cream-2);color:var(--gold-deep)}
+  [aria-selected=true] .tab-tag{background:rgba(246,239,228,.16);color:var(--gold-2)}
+  .sabores{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:26px auto 0;padding:0}
+  .sabores li{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:30px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600;font-size:.95rem}
+  .sabores .dot{width:13px;height:13px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(74,47,28,.25)}
+  @media(max-width:420px){.tabs [role=tab]{padding:10px 16px;font-size:.95rem}.sabores{gap:6px}.sabores li{padding:7px 11px;font-size:.88rem;gap:7px}}
+  .dot.leite{background:#8a5a35}.dot.branco{background:#f3e6cf}.dot.amargo{background:#2e1b10}
+  .sabores-note{text-align:center;color:var(--muted);font-size:.95rem;margin-top:10px}
+  .soon{max-width:620px;margin:34px auto 0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:44px 28px;box-shadow:0 26px 50px -34px rgba(74,47,28,.55)}
+  .soon-tag{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#3a2415;background:var(--gold-2);padding:7px 16px;border-radius:22px}
+  .soon h3{font-family:'Petrona',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.02em;line-height:1.1;margin-top:16px}
+  .soon h3 em{font-style:italic;color:var(--gold-deep)}
+  .soon p{color:var(--muted);font-size:1.05rem;max-width:44ch;margin:12px auto 0;text-wrap:balance}
   .specnote{max-width:640px;margin:30px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:1.08rem;color:var(--choc)}
   .specnote strong{font-style:normal;font-weight:700}
 
@@ -110,6 +129,19 @@
         <p class="sub" id="precos-sub">Caixa de Trufas Ocas · preço de lançamento</p>
       </div>
 
+      <div class="tabs" role="tablist" aria-label="Linhas de Trufas Ocas">
+        <button type="button" role="tab" id="aba-chocolate" aria-controls="painel-chocolate" aria-selected="true">Chocolate</button>
+        <button type="button" role="tab" id="aba-cobertura" aria-controls="painel-cobertura" aria-selected="false" tabindex="-1">Cobertura <span class="tab-tag">Em breve</span></button>
+      </div>
+
+      <div role="tabpanel" id="painel-chocolate" aria-labelledby="aba-chocolate">
+      <ul class="sabores" aria-label="Sabores">
+        <li><span class="dot leite" aria-hidden="true"></span>Ao leite</li>
+        <li><span class="dot branco" aria-hidden="true"></span>Branco</li>
+        <li><span class="dot amargo" aria-hidden="true"></span>Meio amargo</li>
+      </ul>
+      <p class="sabores-note">Mesmo valor para os três sabores.</p>
+
       <div class="price-cards">
         <article class="pcard" data-caixa="media">
           <span class="pbadge">Lançamento</span>
@@ -132,7 +164,16 @@
         </article>
       </div>
 
-      <p class="specnote">Chocolate nacional <strong>ao leite</strong> · <strong>Ø 25 mm</strong> · <strong>3,5–4 g</strong> por unidade.</p>
+      <p class="specnote">Chocolate nacional <strong>ao leite, branco ou meio amargo</strong> · <strong>Ø 25 mm</strong> · <strong>3,5–4 g</strong> por unidade.</p>
+      </div>
+
+      <div role="tabpanel" id="painel-cobertura" aria-labelledby="aba-cobertura" hidden>
+        <div class="soon">
+          <span class="soon-tag">Em breve</span>
+          <h3>Trufas Ocas de <em>cobertura</em></h3>
+          <p>Estamos preparando a linha de cobertura. Mais informações em breve.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -186,6 +227,7 @@
   }).catch(function () {}).then(mostrar);
 })();
 </script>
+<script src="assets/abas.js" defer></script>
 <script src="assets/consent.js" defer></script>
 </body>
 </html>
