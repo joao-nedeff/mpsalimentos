@@ -37,9 +37,29 @@ function fsVal(v) {
 
 function precoOk(n) { return typeof n === 'number' && isFinite(n) && n > 0 && n < 1e6; }
 
-function caixaLimpa(c) {
-  if (!c || !precoOk(c.por) || !(Number.isInteger(c.un) && c.un > 0 && c.un < 1e5)) return null;
-  return { un: c.un, de: precoOk(c.de) && c.de > c.por ? c.de : null, por: c.por };
+function unOk(n) { return Number.isInteger(n) && n > 0 && n < 1e5; }
+
+function precoLimpo(c) {
+  if (!c || !precoOk(c.por)) return null;
+  return { de: precoOk(c.de) && c.de > c.por ? c.de : null, por: c.por };
+}
+
+var SABORES = ['leite', 'branco', 'amargo'];
+
+// Doc atual: { selo, un: {media, grande}, sabores: {leite|branco|amargo: {media|grande: {de, por}}} }.
+// Doc antigo: { selo, caixas: {media|grande: {un, de, por}} } -> mesmo preço nos três sabores.
+function precosDoDoc(d) {
+  var velho = d.caixas || {};
+  var un = d.un || { media: velho.media && velho.media.un, grande: velho.grande && velho.grande.un };
+  if (!unOk(un.media) || !unOk(un.grande)) return null;
+  var sabores = {};
+  for (var i = 0; i < SABORES.length; i++) {
+    var s = SABORES[i], fonte = (d.sabores && d.sabores[s]) || velho;
+    var m = precoLimpo(fonte.media), g = precoLimpo(fonte.grande);
+    if (!m || !g) return null;
+    sabores[s] = { media: m, grande: g };
+  }
+  return { un: { media: un.media, grande: un.grande }, sabores: sabores };
 }
 
 async function handlePrecos(request, env, ctx) {
@@ -53,11 +73,10 @@ async function handlePrecos(request, env, ctx) {
     var r = await fetch(env.PRECOS_DOC || PRECOS_DOC);
     if (!r.ok) throw new Error('firestore ' + r.status);
     var d = fsVal({ mapValue: { fields: (await r.json()).fields || {} } });
-    var caixas = d.caixas || {};
-    var media = caixaLimpa(caixas.media), grande = caixaLimpa(caixas.grande);
-    if (!media || !grande) throw new Error('dados incompletos');
+    var p = precosDoDoc(d);
+    if (!p) throw new Error('dados incompletos');
     var selo = typeof d.selo === 'string' ? d.selo.trim().slice(0, 30) : '';
-    var resp = new Response(JSON.stringify({ selo: selo, media: media, grande: grande }), {
+    var resp = new Response(JSON.stringify({ selo: selo, un: p.un, sabores: p.sabores }), {
       headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=60' },
     });
     ctx.waitUntil(cache.put(chave, resp.clone()).catch(function () {}));
