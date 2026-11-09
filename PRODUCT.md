@@ -39,7 +39,7 @@ Buyers reach the site (likely mobile-first, Brazil), assess the product spec, an
 - Single product today; layout must let the product live on the home page with contact info in the footer.
 - Language: Portuguese (Brazil).
 - Contact channels: e-mail joao@mpsalimentos.com and WhatsApp 41 98850-6691 (both shown; no dedicated "order" button requested — visitor chooses the channel).
-- Product spec (confirmed): Sabor — Chocolate nacional, ao leite. Dimensões — Ø 25 mm de diâmetro. Peso aproximado — 3,5 g a 4 g por unidade. Embalagem — caixa com 126 unidades.
+- Product spec (confirmed): Sabor — Chocolate nacional, ao leite. Dimensões — Ø 25 mm de diâmetro. Peso aproximado — 3 g a 4 g por unidade. Embalagem — caixa com 126 unidades.
 
 ## Brand Commitments
 

@@ -77,7 +77,7 @@ under `prefers-reduced-motion`.
 ## Content & Facts (from PRODUCT.md — do not fabricate beyond these)
 
 - Product: Trufas Ocas — cascas de chocolate nacional ao leite, prontas para rechear.
-- Spec: Ø 25 mm · 3,5–4 g/un · caixa com 126 unidades.
+- Spec: Ø 25 mm · 3–4 g/un · caixa com 126 unidades.
 - Contact: WhatsApp (41) 98850-6691 (`wa.me/5541988506691`, pre-filled message) · e-mail
   joao@mpsalimentos.com. Domain: mpsalimentos.com.
 - Single asset: `assets/trufas-ocas.png` (374×302, opaque light-gray bg).
