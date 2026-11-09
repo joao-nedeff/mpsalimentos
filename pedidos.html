@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedidos · MPS Alimentos</title>
+<script>document.documentElement.classList.add('pjs')</script>
 <meta name="description" content="Área de pedidos da MPS Alimentos. Tabela de valores das Trufas Ocas no atacado (caixa Média e Grande) e acesso ao portal de pedidos.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -58,6 +59,10 @@
   .pfrom{color:var(--muted);font-size:1.02rem;text-decoration:line-through}
   .pprice{font-family:'Petrona',serif;font-weight:600;font-size:3rem;line-height:1;color:var(--ink);margin-top:3px}
   .plabel{color:var(--gold-deep);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
+  /* Preços vêm do admin do portal (/api/precos); enquanto carregam, os cartões ficam ocultos
+     por no máximo 1,5 s. Sem JavaScript ou sem resposta, valem os valores escritos aqui. */
+  .pjs .price-cards{opacity:0}
+  .pjs.pok .price-cards{opacity:1;transition:opacity .25s}
   .specnote{max-width:640px;margin:30px auto 0;text-align:center;font-family:'Petrona',serif;font-style:italic;font-size:1.08rem;color:var(--choc)}
   .specnote strong{font-style:normal;font-weight:700}
 
@@ -102,11 +107,11 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>Tabela de valores</h2>
-        <p class="sub">Caixa de Trufas Ocas · preço de lançamento</p>
+        <p class="sub" id="precos-sub">Caixa de Trufas Ocas · preço de lançamento</p>
       </div>
 
       <div class="price-cards">
-        <article class="pcard">
+        <article class="pcard" data-caixa="media">
           <span class="pbadge">Lançamento</span>
           <div class="pname">Média</div>
           <div class="punits">126 unidades</div>
@@ -116,7 +121,7 @@
           <div class="plabel">Preço de lançamento</div>
         </article>
 
-        <article class="pcard">
+        <article class="pcard" data-caixa="grande">
           <span class="pbadge">Lançamento</span>
           <div class="pname">Grande</div>
           <div class="punits">504 unidades</div>
@@ -155,6 +160,32 @@
   </div>
 </footer>
 
+<script>
+// Preços editados no admin do portal de pedidos. Se algo falhar, ficam os valores do HTML.
+(function () {
+  var raiz = document.documentElement, pronto = false;
+  function mostrar() { if (!pronto) { pronto = true; raiz.classList.add('pok'); } }
+  setTimeout(mostrar, 1500);
+  function brl(v) {
+    return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  }
+  fetch('/api/precos').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    if (!d || !d.media || !d.grande) return;
+    var selo = (d.selo || '').trim(), sub = document.getElementById('precos-sub');
+    if (sub) sub.textContent = 'Caixa de Trufas Ocas' + (selo ? ' · preço de ' + selo.toLowerCase() : '');
+    ['media', 'grande'].forEach(function (k) {
+      var c = d[k], el = document.querySelector('.pcard[data-caixa="' + k + '"]');
+      if (!el || !c) return;
+      var q = function (s) { return el.querySelector(s); };
+      q('.pbadge').textContent = selo; q('.pbadge').hidden = !selo;
+      q('.plabel').textContent = selo ? 'Preço de ' + selo.toLowerCase() : ''; q('.plabel').hidden = !selo;
+      q('.punits').textContent = c.un.toLocaleString('pt-BR') + ' unidades';
+      q('.pfrom').textContent = c.de ? 'De ' + brl(c.de) : ''; q('.pfrom').hidden = !c.de;
+      q('.pprice').textContent = brl(c.por);
+    });
+  }).catch(function () {}).then(mostrar);
+})();
+</script>
 <script src="assets/consent.js" defer></script>
 </body>
 </html>

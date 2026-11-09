@@ -1,16 +1,72 @@
-// Worker: serve os arquivos estáticos e trata o formulário de contato.
+// Worker: serve os arquivos estáticos, trata o formulário de contato e entrega os preços.
 // POST /api/contact -> envia e-mail pelo Resend (do próprio domínio),
-// autenticado, direto para joao@mpsalimentos.com. Demais rotas -> assets.
+// autenticado, direto para joao@mpsalimentos.com.
+// GET /api/precos -> preços da página Pedidos, editados pelo João no admin do portal
+// (pedidos.mpsalimentos.com, doc config/site do Firestore). Fica 60 s no cache da
+// Cloudflare: cada visita NÃO vira uma leitura no banco (protege a cota grátis).
+// Demais rotas -> assets.
+
+const PRECOS_DOC = 'https://firestore.googleapis.com/v1/projects/sistema-chocolate/databases/(default)/documents/config/site';
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/api/contact' && request.method === 'POST') {
       return handleContact(request, env);
     }
+    if (url.pathname === '/api/precos' && request.method === 'GET') {
+      return handlePrecos(request, env, ctx);
+    }
     return env.ASSETS.fetch(request);
   },
 };
+
+// Converte um valor do Firestore REST ({stringValue}, {integerValue}, {mapValue}...) em JS.
+function fsVal(v) {
+  if (!v) return null;
+  if ('stringValue' in v) return v.stringValue;
+  if ('integerValue' in v) return Number(v.integerValue);
+  if ('doubleValue' in v) return Number(v.doubleValue);
+  if ('mapValue' in v) {
+    var o = {}, f = v.mapValue.fields || {};
+    for (var k in f) o[k] = fsVal(f[k]);
+    return o;
+  }
+  return null;
+}
+
+function precoOk(n) { return typeof n === 'number' && isFinite(n) && n > 0 && n < 1e6; }
+
+function caixaLimpa(c) {
+  if (!c || !precoOk(c.por) || !(Number.isInteger(c.un) && c.un > 0 && c.un < 1e5)) return null;
+  return { un: c.un, de: precoOk(c.de) && c.de > c.por ? c.de : null, por: c.por };
+}
+
+async function handlePrecos(request, env, ctx) {
+  var cache = caches.default;
+  var chave = new Request(new URL('/api/precos', request.url).toString());
+  try {
+    var hit = await cache.match(chave);
+    if (hit) return hit;
+  } catch (e) { /* cache indisponível: segue para o banco */ }
+  try {
+    var r = await fetch(env.PRECOS_DOC || PRECOS_DOC);
+    if (!r.ok) throw new Error('firestore ' + r.status);
+    var d = fsVal({ mapValue: { fields: (await r.json()).fields || {} } });
+    var caixas = d.caixas || {};
+    var media = caixaLimpa(caixas.media), grande = caixaLimpa(caixas.grande);
+    if (!media || !grande) throw new Error('dados incompletos');
+    var selo = typeof d.selo === 'string' ? d.selo.trim().slice(0, 30) : '';
+    var resp = new Response(JSON.stringify({ selo: selo, media: media, grande: grande }), {
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=60' },
+    });
+    ctx.waitUntil(cache.put(chave, resp.clone()).catch(function () {}));
+    return resp;
+  } catch (e) {
+    // Sem resposta boa: a página mantém os valores escritos no HTML.
+    return json({ ok: false }, 503);
+  }
+}
 
 function json(obj, status) {
   return new Response(JSON.stringify(obj), {
