@@ -44,9 +44,9 @@ function precoLimpo(c) {
   return { de: precoOk(c.de) && c.de > c.por ? c.de : null, por: c.por };
 }
 
-var SABORES = ['leite', 'branco', 'amargo'];
+var SABORES = ['branco', 'leite', 'amargo'];
 
-// Doc atual: { selo, un: {media, grande}, sabores: {leite|branco|amargo: {media|grande: {de, por}}} }.
+// Doc atual: { selo, un: {media, grande}, sabores: {branco|leite|amargo: {media|grande: {de, por}}} }.
 // Doc antigo: { selo, caixas: {media|grande: {un, de, por}} } -> mesmo preço nos três sabores.
 function precosDoDoc(d) {
   var velho = d.caixas || {};

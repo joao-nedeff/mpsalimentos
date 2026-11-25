@@ -79,7 +79,7 @@
   .sabores .dot{width:13px;height:13px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(74,47,28,.25)}
   .sabores [aria-pressed=true] .dot{box-shadow:0 0 0 1.5px rgba(246,239,228,.7)}
   @media(max-width:420px){.tabs [role=tab]{padding:10px 16px;font-size:.95rem}.sabores{gap:6px}.sabores button{padding:7px 11px;font-size:.88rem;gap:7px}}
-  .dot.leite{background:#8a5a35}.dot.branco{background:#f3e6cf}.dot.amargo{background:#2e1b10}
+  .dot.branco{background:#f3e6cf}.dot.leite{background:#8a5a35}.dot.amargo{background:#2e1b10}
   .sabores-note{text-align:center;color:var(--muted);font-size:.95rem;margin-top:10px}
   .soon{max-width:620px;margin:34px auto 0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:44px 28px;box-shadow:0 26px 50px -34px rgba(74,47,28,.55)}
   .soon-tag{display:inline-block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#3a2415;background:var(--gold-2);padding:7px 16px;border-radius:22px}
@@ -140,8 +140,8 @@
 
       <div role="tabpanel" id="painel-chocolate" aria-labelledby="aba-chocolate">
       <div class="sabores" role="group" aria-label="Sabor">
-        <button type="button" data-sabor="leite" aria-pressed="true"><span class="dot leite" aria-hidden="true"></span>Ao leite</button>
-        <button type="button" data-sabor="branco" aria-pressed="false"><span class="dot branco" aria-hidden="true"></span>Branco</button>
+        <button type="button" data-sabor="branco" aria-pressed="true"><span class="dot branco" aria-hidden="true"></span>Branco</button>
+        <button type="button" data-sabor="leite" aria-pressed="false"><span class="dot leite" aria-hidden="true"></span>Ao leite</button>
         <button type="button" data-sabor="amargo" aria-pressed="false"><span class="dot amargo" aria-hidden="true"></span>Meio amargo</button>
       </div>
       <p class="sabores-note">Escolha o sabor para ver os valores.</p>
@@ -168,7 +168,7 @@
         </article>
       </div>
 
-      <p class="specnote">Chocolate nacional <strong>ao leite, branco ou meio amargo</strong> · <strong>Ø 25 mm</strong> · <strong>3–4 g</strong> por unidade.</p>
+      <p class="specnote">Chocolate nacional <strong>branco, ao leite ou meio amargo</strong> · <strong>Ø 25 mm</strong> · <strong>3–4 g</strong> por unidade.</p>
       </div>
 
       <div role="tabpanel" id="painel-cobertura" aria-labelledby="aba-cobertura" hidden>
@@ -207,15 +207,15 @@
 
 <script type="application/json" id="precos-reserva">
 {"selo":"Lançamento","un":{"media":126,"grande":504},"sabores":{
- "leite":{"media":{"de":null,"por":145},"grande":{"de":null,"por":577}},
  "branco":{"media":{"de":null,"por":145},"grande":{"de":null,"por":549}},
+ "leite":{"media":{"de":null,"por":145},"grande":{"de":null,"por":577}},
  "amargo":{"media":{"de":null,"por":145},"grande":{"de":null,"por":576}}}}
 </script>
 <script>
 // Preços por sabor, editados no admin do portal de pedidos (/api/precos).
 // Se a rota falhar, valem os valores de reserva acima (os do ar na última publicação).
 (function () {
-  var raiz = document.documentElement, pronto = false, dados = null, sabor = 'leite';
+  var raiz = document.documentElement, pronto = false, dados = null, sabor = 'branco';
   try { dados = JSON.parse(document.getElementById('precos-reserva').textContent); } catch (e) {}
   function mostrar() { if (!pronto) { pronto = true; raiz.classList.add('pok'); } }
   setTimeout(mostrar, 1500);
